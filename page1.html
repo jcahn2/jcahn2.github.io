@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html>
+    <!-- Load d3.js -->
     <script src='https://d3js.org/d3.v5.min.js'></script>
 
-    <body>
-        <svg width="100", height="100">
-            <circle cx="30", cy="30", r="10"></circle>
-            <circle cx="70", cy="30", r="10"></circle>
-            <rect x="20", y="50", width="60", height="20"></rect>
-        </svg>
-    </body>
+    <!-- Division for graph -->
+    <div id="pie_chart"></div>
+
     <script>
-        var colors = ["green", "red"]
-        d3.selectAll("circle").data(colors).attr("fill", function(d) {return d})
-        d3.select("rect").attr("height",10)
+        // dimensions and margins of graph
+        var width = 450
+            height = 450
+            margin = 40
+        
+        // radius of piplot is half width/height
+        var radius = Math.min(width, height) / 2 - margin
+        
+        // append svg object to div
+        var svg = d3.select("pie_chart")
+            .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+            .append("g")
+                .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
+        
+        // dummy data
+        var data = {a: 9, b: 20, c:30, d:8, e:12}
+        // set the color scale
+        var color = d3.scaleOrdinal()
+        .domain(data)
+        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"])
+
+        // pie and arc setup
+        var arc = d3.arc().innerRadius(0).outerRadius(radius)
+        var pie = d3.pie()
+            .value(function(d) {return d.value;})
+        var pie_data = pie(d3.entries(data))
+
+        // build pie chart
+        svg
+            .selectAll("path")
+            .data(pie_data)
+            .enter()
+            .append("path")
+            .attr("d", arc)
+            .attr("fill", function(d) {return (color(d.data.key))})
+            .attr("stroke", "black")
+            .style("stroke-width", "2px")
+            .style("opacity", 0.7)
+
     </script>
 </html>
 
