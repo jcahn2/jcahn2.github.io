@@ -1,0 +1,11 @@
+﻿category,not_exited,exited
+total,7963,2037
+france,4204,810
+germany,1695,814
+spain,2064,413
+female,3404,1139
+male,4559,898
+has_cr_card,5631,1424
+no_cr_card,2332,613
+is_active_member,4416,735
+not_active_member,3547,1302
