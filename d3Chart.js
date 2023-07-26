@@ -46,37 +46,36 @@ function chart(container, data){
         .call(g => g.select(".domain").remove());
 
     // Create a group for each day of data, and append two lines to it.
-    console.log(ticker)
-    // const g = svg.append("g")
-    //     .attr("stroke-linecap", "round")
-    //     .attr("stroke", "black")
-    // .selectAll("g")
-    // .data(ticker)
-    // .join("g")
-    //     .attr("transform", d => 'translate('+x(d.Date)+',0)');
+    const g = svg.append("g")
+        .attr("stroke-linecap", "round")
+        .attr("stroke", "black")
+    .selectAll("g")
+    .data(ticker)
+    .join("g")
+        .attr("transform", d => `translate(${x(d.Date)},0)`);
 
-    // g.append("line")
-    //     .attr("y1", d => y(d.Low))
-    //     .attr("y2", d => y(d.High));
+    g.append("line")
+        .attr("y1", d => y(d.Low))
+        .attr("y2", d => y(d.High));
 
-    // g.append("line")
-    //     .attr("y1", d => y(d.Open))
-    //     .attr("y2", d => y(d.Close))
-    //     .attr("stroke-width", x.bandwidth())
-    //     .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
-    //         : d.Close > d.Open ? d3.schemeSet1[2]
-    //         : d3.schemeSet1[8]);
+    g.append("line")
+        .attr("y1", d => y(d.Open))
+        .attr("y2", d => y(d.Close))
+        .attr("stroke-width", x.bandwidth())
+        .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
+            : d.Close > d.Open ? d3.schemeSet1[2]
+            : d3.schemeSet1[8]);
 
-    // // Append a title (tooltip).
-    // const formatDate = d3.utcFormat("%B %-d, %Y");
-    // const formatValue = d3.format(".2f");
-    // const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
+    // Append a title (tooltip).
+    const formatDate = d3.utcFormat("%B %-d, %Y");
+    const formatValue = d3.format(".2f");
+    const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    // g.append("title")
-    //     .text(d => `${formatDate(d.Date)}
-    // Open: ${formatValue(d.Open)}
-    // Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-    // Low: ${formatValue(d.Low)}
-    // High: ${formatValue(d.High)}`);
+    g.append("title")
+        .text(d => `${formatDate(d.Date)}
+    Open: ${formatValue(d.Open)}
+    Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
+    Low: ${formatValue(d.Low)}
+    High: ${formatValue(d.High)}`);
 
 }
