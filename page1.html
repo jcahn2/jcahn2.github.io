@@ -3,16 +3,14 @@
     <!-- Load d3.js -->
     <script src='https://d3js.org/d3.v5.min.js'></script>
 
-    <!-- Division for graph -->
-    <div id="line_chart"></div>
-
     <!-- load csv -->
     <body onload="init()">
         <script>
             async function init() {
-                data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv");
+                data = d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv");
 
                 ticker = data.slice(-130)
+                console.log(ticker)
                 
                 // Declare the chart dimensions and margins.
                 const width = 928;
