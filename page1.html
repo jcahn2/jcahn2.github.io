@@ -22,14 +22,28 @@
             );
             ticker1 = data.slice(0,130)
             ticker2 = data.slice(131,300)
+        }
+    </script>
 
+    <!-- button functions -->
+    <script>
+        function chart1() {
             chart('.container1',ticker1)
-            chart('.container2',ticker1)
+        }
+        function chart2() {
+            chart('.container2',ticker2)
         }
     </script>
 
     <body onload="init()">
+        <button onClick="chart1">
+            chart 1
+        </button>
+        <button onClick="chart2">
+            chart 2
+        </button>
         <div class="container1"></div>
+
         <div class="container2"></div>
     </body>
 

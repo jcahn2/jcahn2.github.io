@@ -1,4 +1,6 @@
 function chart(container, data){
+
+    
     
     ticker = data.slice(-1000)
                 
@@ -22,7 +24,8 @@ function chart(container, data){
         .domain([d3.min(ticker, d => d.Low), d3.max(ticker, d => d.High)])
         .rangeRound([height - marginBottom, marginTop]);
 
-    // Create the SVG container.
+    // Clear and create the SVG container.
+    d3.select(container).html = ""
     const svg = d3.select(container).append("svg")
         .attr("viewBox", [0, 0, width, height]);
 
