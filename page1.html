@@ -2,8 +2,6 @@
 <html>
     <!-- Load d3.js -->
     <script src='https://d3js.org/d3.v5.min.js'></script>
-    <!-- graph div -->
-    <div id="chart"></div>
     
     <!-- load csv -->
     <body onload="init()">
@@ -36,7 +34,7 @@
                     .rangeRound([height - marginBottom, marginTop]);
         
                 // Create the SVG container.
-                const svg = d3.select("#chart")
+                const svg = d3.create("svg")
                     .attr("viewBox", [0, 0, width, height]);
         
                 // Append the axes.
