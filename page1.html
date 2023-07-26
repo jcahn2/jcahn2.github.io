@@ -7,13 +7,16 @@
     <div id="pie_chart"></div>
 
     <!-- load csv -->
-    <script>
-        async function init() {
-            data = await d3.csv("https://jcahn2.github.io/churn_modeling_clean.csv");
-            console.log("hello world")
-            console.log(data);
-        }
-    </script>
+    <body>
+        <script>
+            async function init() {
+                data = await d3.csv("https://jcahn2.github.io/churn_modeling_clean.csv");
+                console.log("hello world");
+                console.log(data);
+            }
+        </script>
+    </body>
+    
     <script>
         // dimensions and margins of graph
         var width = 450
