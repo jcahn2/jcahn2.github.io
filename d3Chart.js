@@ -52,7 +52,7 @@ function chart(container, data){
     .selectAll("g")
     .data(ticker)
     .join("g")
-        .attr("transform", d => `translate(${x(d.Date)},0)`);
+        .attr("transform", d => `translate(${x(new Date(d[0]))},0)`);
 
     g.append("line")
         .attr("y1", d => y(d.Low))
