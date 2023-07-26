@@ -7,7 +7,7 @@
     <div id="pie_chart"></div>
 
     <!-- load csv -->
-    <body>
+    <body onload="init()">
         <script>
             async function init() {
                 data = await d3.csv("https://jcahn2.github.io/churn_modeling_clean.csv");
