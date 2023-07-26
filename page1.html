@@ -12,10 +12,9 @@
         <script>
             async function init() {
                 const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
-                    d3.autoType)
-                    .get(function(d) {
-                        console.log(d);
-                    });
+                    d3.autoType);
+
+                console.log(data)
                 chart('.container',data)
             }
         </script>
