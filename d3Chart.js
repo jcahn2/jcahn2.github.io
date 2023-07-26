@@ -27,7 +27,7 @@ function chart(container, data){
 
     // Append the axes.
     svg.append("g")
-        .attr("transform", `translate(0,${height - marginBottom})`)
+        .attr("transform", 'translate(0,'+(height - marginBottom)+')')
         .call(d3.axisBottom(x)
         .tickValues(d3.utcMonday
             .every(width > 720 ? 1 : 2)
@@ -36,13 +36,13 @@ function chart(container, data){
         .call(g => g.select(".domain").remove());
 
     svg.append("g")
-        .attr("transform", `translate(${marginLeft},0)`)
+        .attr("transform", 'translate('+marginLeft+',0)')
         .call(d3.axisLeft(y)
         .tickFormat(d3.format("$~f"))
         .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
         .call(g => g.selectAll(".tick line").clone()
         .attr("stroke-opacity", 0.2)
-        .attr("x2", width - marginLeft - marginRight))
+        .attr("x2", (width - marginLeft - marginRight)))
         .call(g => g.select(".domain").remove());
 
     // Create a group for each day of data, and append two lines to it.
@@ -52,7 +52,7 @@ function chart(container, data){
     .selectAll("g")
     .data(ticker)
     .join("g")
-        .attr("transform", d => `translate(${x(d.Date)},0)`);
+        .attr("transform", d => 'translate('+x(d.Date)+',0)');
 
     g.append("line")
         .attr("y1", d => y(d.Low))
