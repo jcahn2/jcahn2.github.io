@@ -12,7 +12,16 @@
         <script>
             async function init() {
                 const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
-                    d3.autoType);
+                    ({Date, Open, High, Low, Close, Volume}) => 
+                        ({
+                            Date: new Date(Date),
+                            Open: +Open,
+                            High: +High,
+                            Low: +Low,
+                            Close: +Close,
+                            Volume: +Volume
+                        })
+                    );
 
                 console.log(data)
                 chart('.container',data)
