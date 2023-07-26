@@ -7,26 +7,30 @@
     <script src="d3Chart.js"></script>
 
     <!-- load csv -->
-    <body onload="init()">
-        <div class="container"></div>
-        <script>
-            async function init() {
-                const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
-                    function(d) {return {
-                                    Date: d3.timeParse("%m/%d/%Y")(d.Date),
-                                    Open: +d.Open,
-                                    High: +d.High,
-                                    Low: +d.Low,
-                                    Close: +d.Close,
-                                    Volume: +d.Volume
-                                        }
-                                }
-                );
+    <script>
+        async function init() {
+            const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
+                function(d) {return {
+                                Date: d3.timeParse("%m/%d/%Y")(d.Date),
+                                Open: +d.Open,
+                                High: +d.High,
+                                Low: +d.Low,
+                                Close: +d.Close,
+                                Volume: +d.Volume
+                                    }
+                            }
+            );
+            ticker1 = data.slice(0,130)
+            ticker2 = data.slice(131,300)
 
-                console.log(data)
-                chart('.container',data)
-            }
-        </script>
+            chart('.container1',ticker1)
+            chart('.container2',ticker1)
+        }
+    </script>
+
+    <body onload="init()">
+        <div class="container1"></div>
+        <div class="container2"></div>
     </body>
 
 </html>

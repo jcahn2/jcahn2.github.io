@@ -1,8 +1,9 @@
 function chart(container, data){
+    
     ticker = data.slice(-1000)
                 
     // Declare the chart dimensions and margins.
-    const width = 800;
+    const width = 600;
     const height = 600;
     const marginTop = 50;
     const marginRight = 50;
