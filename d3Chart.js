@@ -22,7 +22,7 @@ function chart(container, data){
         .rangeRound([height - marginBottom, marginTop]);
 
     // Create the SVG container.
-    const svg = d3.create("svg")
+    const svg = d3.select(container).append("svg")
         .attr("viewBox", [0, 0, width, height]);
 
     // Append the axes.
@@ -52,7 +52,7 @@ function chart(container, data){
     .selectAll("g")
     .data(ticker)
     .join("g")
-        .attr("transform", d => `translate(${x(new Date(d[0]))},0)`);
+        .attr("transform", d => `translate(${x(d.Date)},0)`);
 
     g.append("line")
         .attr("y1", d => y(d.Low))
@@ -78,5 +78,4 @@ function chart(container, data){
     Low: ${formatValue(d.Low)}
     High: ${formatValue(d.High)}`);
 
-    return svg.node();
 }
