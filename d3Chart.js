@@ -9,8 +9,6 @@ function chart(container, data){
     const marginBottom = 30;
     const marginLeft = 40;
 
-    parseDate = d3.utcDay();
-
     // Declare the positional encodings.
     const x = d3.scaleBand()
         .domain(d3.utcDay
@@ -54,7 +52,7 @@ function chart(container, data){
     .selectAll("g")
     .data(ticker)
     .join("g")
-        .attr("transform", d => `translate(${x(parseDate(d.Date))},0)`);
+        .attr("transform", d => `translate(${x(d3.utcDay(d.Date))},0)`);
 
     g.append("line")
         .attr("y1", d => y(d.Low))
