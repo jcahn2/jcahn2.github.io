@@ -25,7 +25,7 @@ function chart(container, data){
         .rangeRound([height - marginBottom, marginTop]);
 
     // Clear and create the SVG container.
-    d3.select(container).html = ""
+    
     const svg = d3.select(container).append("svg")
         .attr("viewBox", [0, 0, width, height]);
 
