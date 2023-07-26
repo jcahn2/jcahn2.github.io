@@ -1,13 +1,13 @@
 function chart(container, data){
-    ticker = data.slice(-130)
+    ticker = data.slice(-1000)
                 
     // Declare the chart dimensions and margins.
-    const width = 928;
+    const width = 800;
     const height = 600;
-    const marginTop = 20;
-    const marginRight = 30;
-    const marginBottom = 30;
-    const marginLeft = 40;
+    const marginTop = 50;
+    const marginRight = 50;
+    const marginBottom = 50;
+    const marginLeft = 50;
 
     // Declare the positional encodings.
     const x = d3.scaleBand()
@@ -32,7 +32,7 @@ function chart(container, data){
         .tickValues(d3.utcMonday
             .every(width > 720 ? 1 : 2)
             .range(ticker.at(0).Date, ticker.at(-1).Date))
-        .tickFormat(d3.utcFormat("%-m/%-d")))
+        .tickFormat(d3.utcFormat("%-m/%-d/%-Y")))
         .call(g => g.select(".domain").remove());
 
     svg.append("g")
