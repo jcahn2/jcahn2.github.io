@@ -11,17 +11,8 @@
         <div class="container"></div>
         <script>
             async function init() {
-                data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv")
-                    .row(function(d) {
-                        return {
-                            Date: d3.time.format('%Y-%m-%d').parse(d.Date),
-                            Open: +d.Open,
-                            High: +d.High,
-                            Low: +d.Low,
-                            Close: +d.Close,
-                            Volume: +d.Volume
-                        };
-                    })
+                const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
+                    d3.autoType)
                     .get(function(d) {
                         console.log(d);
                     });
