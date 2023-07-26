@@ -11,7 +11,7 @@
         <div class="container"></div>
         <script>
             async function init() {
-                const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv")
+                data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv")
                     .row(function(d) {
                         return {
                             Date: d3.time.format('%Y-%m-%d').parse(d.Date),
@@ -21,6 +21,9 @@
                             Close: +d.Close,
                             Volume: +d.Volume
                         };
+                    })
+                    .get(function(d) {
+                        console.log(d);
                     });
                 chart('.container',data)
             }
