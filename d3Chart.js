@@ -68,7 +68,7 @@ function chart(container, data){
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    var Tooltip = g.append("div")
+    var Tooltip = g.append("title")
                     .style("opacity", 0)
                     .attr("class", "tooltip")
                     .style("border", "solid")
@@ -104,10 +104,7 @@ function chart(container, data){
     // append lines to chart
     g.append("line")
         .attr("y1", d => y(d.Low))
-        .attr("y2", d => y(d.High))
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave);
+        .attr("y2", d => y(d.High));
 
     g.append("line")
         .attr("y1", d => y(d.Open))
