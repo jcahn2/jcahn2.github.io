@@ -15,7 +15,7 @@ function chart(container, data){
             .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
         .range([marginLeft, width - marginRight])
-        .padding(0.2);
+        .padding(0.1);
 
     const y = d3.scaleLog()
         .domain([d3.min(ticker, d => d.Low), d3.max(ticker, d => d.High)])

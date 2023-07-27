@@ -20,9 +20,8 @@
                                     }
                             }
             );
-            ticker1 = data.slice(0,130)
-            console.log(ticker1[0])
-            ticker2 = data.slice(131,300)
+            ticker1 = data.slice(0,100)
+            ticker2 = data.slice(101,200)
 
             chart('.container',ticker1)
         }
@@ -31,7 +30,7 @@
     <!-- button functions -->
     <script>
         function chart1() {
-            d3.selectAll('container').remove();
+            d3.selectAll('svg').remove();
             chart('.container',ticker1)
         }
         function chart2() {
