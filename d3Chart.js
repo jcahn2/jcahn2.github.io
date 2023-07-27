@@ -68,13 +68,14 @@ function chart(container, data){
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    var Tooltip = svg.append("div")
-                    .style("opacity", 0)
-                    .attr("class", "tooltip")
-                    .style("border", "solid")
-                    .style("border-width", "2px")
-                    .style("border-radius", "5px")
-                    .style("padding", "5px");
+    var Tooltip = d3.select(container)
+                    .append("div")
+                        .style("opacity", 0)
+                        .attr("class", "tooltip")
+                        .style("border", "solid")
+                        .style("border-width", "2px")
+                        .style("border-radius", "5px")
+                        .style("padding", "5px");
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
         Tooltip
@@ -85,7 +86,7 @@ function chart(container, data){
     }
     var mousemove = function(d) {
         Tooltip
-        .text(d => `${formatDate(d.Date)}
+        .html(d => `${formatDate(d.Date)}
                 Open: ${formatValue(d.Open)}
                 Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
                 Low: ${formatValue(d.Low)}
