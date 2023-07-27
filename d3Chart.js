@@ -6,13 +6,13 @@ function chart(container, data){
     const height = 600;
     const marginTop = 20;
     const marginRight = 30;
-    const marginBottom = 50;
+    const marginBottom = 60;
     const marginLeft = 40;
 
     // Declare the positional encodings.
     const x = d3.scaleBand()
         .domain(d3.utcDay
-            .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
+            .range(ticker.at(0).Date - 1, +ticker.at(-1).Date + 1)
             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
         .range([marginLeft, width - marginRight])
         .padding(0.2);
