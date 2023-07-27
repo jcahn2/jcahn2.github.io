@@ -2,12 +2,12 @@ function chart_all(container, data){
     ticker = data
                 
     // Declare the chart dimensions and margins.
-    const width = window.innerWidth * 6;
-    const height = 600;
+    const width = window.innerWidth * 7;
+    const height = 900;
     const marginTop = 20;
     const marginRight = 30;
     const marginBottom = 60;
-    const marginLeft = 40;
+    const marginLeft = 30;
 
     // Declare the positional encodings.
     const x = d3.scaleUtc()
@@ -60,7 +60,7 @@ function chart_all(container, data){
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
-            .attr("transform", "rotate(-65)");
+            .attr("transform", "rotate(-75)");
 
     // Create a group for each day of data, and append two lines to it.
     const g = svg.append("g")
@@ -78,7 +78,7 @@ function chart_all(container, data){
     g.append("line")
         .attr("y1", d => y(d.Open))
         .attr("y2", d => y(d.Close))
-        .attr("stroke-width", 5)
+        .attr("stroke-width", 3)
         .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8]);

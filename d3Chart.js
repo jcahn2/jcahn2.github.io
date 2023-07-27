@@ -86,13 +86,15 @@ function chart(container, data){
     }
     var mousemove = function(d) {
         Tooltip
-        .html(d => `${formatDate(d.Date)}
-                Open: ${formatValue(d.Open)}
-                Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-                Low: ${formatValue(d.Low)}
-                High: ${formatValue(d.High)}`)
+            .html("tooltip text")
+        // .html(d => `${formatDate(d.Date)}
+        //         Open: ${formatValue(d.Open)}
+        //         Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
+        //         Low: ${formatValue(d.Low)}
+        //         High: ${formatValue(d.High)}`)
         .style("left", (d3.mouse(this)[0]+70) + "px")
         .style("top", (d3.mouse(this)[1]) + "px")
+        console.log(d)
     }
     var mouseleave = function(d) {
         Tooltip
