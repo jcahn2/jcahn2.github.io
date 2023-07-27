@@ -68,7 +68,7 @@ function chart(container, data){
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    var Tooltip = g.append("title")
+    var Tooltip = svg.append("div")
                     .style("opacity", 0)
                     .attr("class", "tooltip")
                     .style("border", "solid")
