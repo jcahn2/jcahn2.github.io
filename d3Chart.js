@@ -12,7 +12,7 @@ function chart(container, data){
     // Declare the positional encodings.
     const x = d3.scaleBand()
         .domain(d3.utcDay
-            .range(ticker.at(0).Date - 1, +ticker.at(-1).Date + 1)
+            .range(+ticker.at(0).Date, +ticker.at(-1).Date + 1)
             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
         .range([marginLeft, width - marginRight])
         .padding(0.2);
