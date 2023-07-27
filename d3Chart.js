@@ -2,8 +2,8 @@ function chart(container, data){
     ticker = data
                 
     // Declare the chart dimensions and margins.
-    const width = 400;
-    const height = 400;
+    const width = 200;
+    const height = 200;
     const marginTop = 50;
     const marginRight = 50;
     const marginBottom = 50;
@@ -25,45 +25,34 @@ function chart(container, data){
     var svg = d3.select(container).append("svg")
         .attr("viewBox", [0, 0, width, height]);
 
-    // Append the axes.
-    svg.append("g")
-        .attr("transform", `translate(0,${height - marginBottom})`)
-        .call(d3.axisBottom(x)
-        .tickValues(d3.utcMonday
-            .every(width > 720 ? 1 : 2)
-            .range(ticker.at(0).Date, ticker.at(-1).Date))
-        .tickFormat(d3.utcFormat("%-m/%-Y")))
-        .call(g => g.select(".domain").remove())
-        .attr("class","myXaxis");
-
-    svg.append("g")
-        .attr("transform", `translate(${marginLeft},0)`)
-        .call(d3.axisLeft(y)
-        .tickFormat(d3.format("$~f"))
-        .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
-        .call(g => g.selectAll(".tick line").clone()
-        .attr("stroke-opacity", 0.2)
-        .attr("x2", (width - marginLeft - marginRight)))
-        .call(g => g.select(".domain").remove())
-        .attr("class","myYaxis");
-
     
 
 
     // Update function to transition
     function update(ticker) {
-        x.domain(d3.utcDay
-            .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
-            .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6));
-        svg.selectAll(".myXaxis").transition()
-            .duration(3000)
-            .call(d3.axisBottom(x));
-
-        y.domain([d3.min(ticker, d => d.Low), d3.max(ticker, d => d.High)]);
-        svg.selectAll(".myYaxis")
+        // Append the axes.
+        svg.append("g")
+            .attr("transform", `translate(0,${height - marginBottom})`)
+            .call(d3.axisBottom(x)
+            .tickValues(d3.utcMonday
+                .every(width > 720 ? 1 : 2)
+                .range(ticker.at(0).Date, ticker.at(-1).Date))
+            .tickFormat(d3.utcFormat("%-m/%-Y")))
+            .call(g => g.select(".domain").remove())
             .transition()
-            .duration(3000)
-            .call(d3.axisLeft(y));
+            .duration(2000);
+
+        svg.append("g")
+            .attr("transform", `translate(${marginLeft},0)`)
+            .call(d3.axisLeft(y)
+            .tickFormat(d3.format("$~f"))
+            .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
+            .call(g => g.selectAll(".tick line").clone()
+            .attr("stroke-opacity", 0.2)
+            .attr("x2", (width - marginLeft - marginRight)))
+            .call(g => g.select(".domain").remove())
+            .transition()
+            .duration(2000);
 
         
         // Create a group for each day of data, and append two lines to it.
@@ -73,13 +62,23 @@ function chart(container, data){
         .selectAll("g")
         .data(ticker)
         .join("g")
-            .attr("transform", d => `translate(${x(d3.utcDay(d.Date))},0)`);
+            .attr("transform", d => `translate(${x(d3.utcDay(d.Date))},0)`)
+        .transition()
+        .duration(2000);
 
-        g.append("line")
+        g   .enter()
+            .append("line")
+            .merge(g)
+            .transition()
+            .duration(2000)
             .attr("y1", d => y(d.Low))
             .attr("y2", d => y(d.High));
 
-        g.append("line")
+        g   .enter()
+            .append("line")
+            .merge(g)
+            .transition()
+            .duration(2000)
             .attr("y1", d => y(d.Open))
             .attr("y2", d => y(d.Close))
             .attr("stroke-width", x.bandwidth())
