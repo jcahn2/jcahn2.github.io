@@ -11,7 +11,7 @@
         async function init() {
             const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
                 function(d) {return {
-                                Date: d.Date,
+                                Date: d3.timeParse("%Y-%m-%d")(d.Date),
                                 Open: +d.Open,
                                 High: +d.High,
                                 Low: +d.Low,
@@ -31,7 +31,7 @@
     <!-- button functions -->
     <script>
         function chart1() {
-            d3.selectAll('svg').remove();
+            d3.selectAll('container').remove();
             chart('.container',ticker1)
         }
         function chart2() {
