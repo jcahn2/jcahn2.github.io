@@ -18,8 +18,7 @@ function chart(container, data){
     //     .padding(0.2);
     const x = d3.scaleUtc()
             .domain(d3.extent(ticker, d => d3.utcDay(d.Date)))
-            .range([marginLeft, width - marginRight])
-            .padding(0.2);
+            .range([marginLeft, width - marginRight]);
 
     const y = d3.scaleLog()
         .domain([d3.min(ticker, d => d.Low), d3.max(ticker, d => d.High)])
