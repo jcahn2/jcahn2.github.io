@@ -15,6 +15,7 @@ function chart(container, data){
             .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
         .range([marginLeft, width - marginRight]);
+    console.log(x.bandwidth());
     // const x = d3.scaleUtc()
     //         .domain(d3.extent(ticker, d => d3.utcDay(d.Date)))
     //         .range([marginLeft, width - marginRight]);
