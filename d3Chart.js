@@ -81,19 +81,38 @@ function chart(container, data){
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    g.append("div")
-            .style("position", "absolute")
-            .style("visibility", "hidden")
+    var Tooltip = g.append("div")
+                    .style("opacity", 0)
+                    .attr("class", "tooltip")
+                    .style("border", "solid")
+                    .style("border-width", "2px")
+                    .style("border-radius", "5px")
+                    .style("padding", "5px");
+    // Three function that change the tooltip when user hover / move / leave a cell
+    var mouseover = function(d) {
+        Tooltip
+        .style("opacity", 1)
+        d3.select(this)
+        .style("stroke", "black")
+        .style("opacity", 1)
+    }
+    var mousemove = function(d) {
+        Tooltip
         .text(d => `${formatDate(d.Date)}
-    Open: ${formatValue(d.Open)}
-    Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-    Low: ${formatValue(d.Low)}
-    High: ${formatValue(d.High)}`);
-
-    d3.select("g")
-        .on("mouseover", function() {return tooltip.style("visibility", "visible");})
-        .on("mousemove", function(){return tooltip.style("top", (event.pageY-800)+"px").style("left",(event.pageX-800)+"px");})
-        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+                Open: ${formatValue(d.Open)}
+                Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
+                Low: ${formatValue(d.Low)}
+                High: ${formatValue(d.High)}`)
+        .style("left", (d3.mouse(this)[0]+70) + "px")
+        .style("top", (d3.mouse(this)[1]) + "px")
+    }
+    var mouseleave = function(d) {
+        Tooltip
+        .style("opacity", 0)
+        d3.select(this)
+        .style("stroke", "none")
+        .style("opacity", 0.8)
+    }
 
     // add annotation
     // const annotations = [
