@@ -80,11 +80,11 @@ function chart(container, data){
     var mouseover = function(d) {
         Tooltip
         .style("opacity", 1)
-        d3.select(this)
-        .style("stroke", "black")
-        .style("opacity", 1)
+        // d3.select(this)
+        // .style("stroke", "black")
+        // .style("opacity", 1)
     }
-    var mousemove = function(event, d) {
+    var mousemove = function(d) {
         // Tooltip.html(d => `${formatDate(d.Date)}
         //     Open: ${formatValue(d.Open)}
         //     Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
@@ -92,17 +92,17 @@ function chart(container, data){
         //     High: ${formatValue(d.High)}`);
         Tooltip.html("tooltip test");
         
-        const [x, y] = d3.pointer(event, document.body)
         Tooltip
+        .style("position", "absolute")
         .style("left", (x+100) + "px")
         .style("top", (y+0) + "px")
     }
     var mouseleave = function(d) {
         Tooltip
         .style("opacity", 0)
-        d3.select(this)
-        .style("stroke", "none")
-        .style("opacity", 0.8)
+        // d3.select(this)
+        // .style("stroke", "none")
+        // .style("opacity", 0.8)
     }
 
     // append lines to chart
