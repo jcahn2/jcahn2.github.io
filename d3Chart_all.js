@@ -82,6 +82,9 @@ function chart_all(container, data){
             : d3.schemeSet1[8]);
 
     
+    body.scrollBy(width, 0);
+
+    
     // Append a title (tooltip).
     const formatDate = d3.utcFormat("%B %-d, %Y");
     const formatValue = d3.format(".2f");
