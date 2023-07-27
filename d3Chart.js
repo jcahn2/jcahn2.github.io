@@ -84,16 +84,18 @@ function chart(container, data){
         .style("stroke", "black")
         .style("opacity", 1)
     }
-    var mousemove = function(d) {
-        Tooltip.html(d => `${formatDate(d.Date)}
-            Open: ${formatValue(d.Open)}
-            Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-            Low: ${formatValue(d.Low)}
-            High: ${formatValue(d.High)}`);
+    var mousemove = function(event, d) {
+        // Tooltip.html(d => `${formatDate(d.Date)}
+        //     Open: ${formatValue(d.Open)}
+        //     Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
+        //     Low: ${formatValue(d.Low)}
+        //     High: ${formatValue(d.High)}`);
+        Tooltip.html("tooltip test");
         
+        const [x, y] = d3.pointer(event, document.body)
         Tooltip
-        .style("left", (d3.mouse(this)[0]+70) + "px")
-        .style("top", (d3.mouse(this)[1]) + "px")
+        .style("left", (x+100) + "px")
+        .style("top", (y+0) + "px")
     }
     var mouseleave = function(d) {
         Tooltip
