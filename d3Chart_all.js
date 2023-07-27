@@ -25,7 +25,7 @@ function chart_all(container, data){
     const parent = d3.select(container).append("div");
     
     // append vertical axis
-    svg.append("g")
+    parent.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y)
             .tickFormat(d3.format("$~f"))
@@ -45,7 +45,7 @@ function chart_all(container, data){
     const svg = body.append("svg")
         .attr("viewBox", [0, 0, width, height]);
 
-    // Append the axes.
+    // Append the horizontal axis.
     svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(d3.axisBottom(x)
