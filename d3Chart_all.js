@@ -23,17 +23,6 @@ function chart_all(container, data){
     // which moves as the user scrolls the content; the other for the vertical axis (which 
     // doesn’t scroll).
     const parent = d3.select(container).append("div");
-    
-    // append vertical axis
-    parent.append("g")
-        .attr("transform", `translate(${marginLeft},0)`)
-        .call(d3.axisLeft(y)
-            .tickFormat(d3.format("$~f"))
-            .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
-        .call(g => g.selectAll(".tick line").clone()
-            .attr("stroke-opacity", 0.2)
-            .attr("x2", (width - marginLeft - marginRight)))
-        .call(g => g.select(".domain").remove());
 
     
     // create scrolling div containing horizontal axis
@@ -46,6 +35,17 @@ function chart_all(container, data){
         .attr("width", width)
         .attr("height", height)
         .style("display", "block");
+
+    // append vertical axis
+    parent.append("g")
+        .attr("transform", `translate(${marginLeft},0)`)
+        .call(d3.axisLeft(y)
+            .tickFormat(d3.format("$~f"))
+            .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
+        .call(g => g.selectAll(".tick line").clone()
+            .attr("stroke-opacity", 0.2)
+            .attr("x2", (width - marginLeft - marginRight)))
+        .call(g => g.select(".domain").remove());
 
     // Append the horizontal axis.
     svg.append("g")
