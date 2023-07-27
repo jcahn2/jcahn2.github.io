@@ -24,21 +24,19 @@
             ticker2 = data.slice(101,200)
 
             chart('.container',ticker1)
-
-            function chart1() {
-            d3.selectAll('svg').remove();
-            chart('.container',ticker1)
-            }
-            function chart2() {
-                d3.selectAll('svg').remove();
-                chart('.container',ticker2)
-            }
         }
     </script>
 
     <!-- button functions -->
     <script>
-        
+        function chart1() {
+            d3.selectAll('svg').remove();
+            chart('.container',ticker1)
+        }
+        function chart2() {
+            d3.selectAll('svg').remove();
+            chart('.container',ticker2)
+        }
     </script>
 
     <body onload="init()">
