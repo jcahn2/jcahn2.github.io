@@ -43,7 +43,9 @@ function chart_all(container, data){
     
     // Create the SVG
     const svg = body.append("svg")
-        .attr("viewBox", [0, 0, width, height]);
+        .attr("width", width)
+        .attr("height", height)
+        .style("display", "block");
 
     // Append the horizontal axis.
     svg.append("g")
