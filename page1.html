@@ -28,10 +28,11 @@
                     d.Date >= d3.timeParse("%Y-%m-%d")("2020-01-01") &&
                     d.Date <= d3.timeParse("%Y-%m-%d")("2020-12-31")
                 )
-            })
-            ticker2 = data.slice(101,200)
+            });
 
-            chart('.container',ticker1)
+            ticker2 = data.slice(101,200);
+
+            chart('.container',ticker1);
         }
     </script>
 
@@ -39,11 +40,11 @@
     <script>
         function chart1() {
             d3.selectAll('svg').remove();
-            chart('.container',ticker1)
+            chart('.container',ticker1);
         }
         function chart2() {
             d3.selectAll('svg').remove();
-            chart('.container',ticker2)
+            chart('.container',ticker2);
         }
     </script>
 

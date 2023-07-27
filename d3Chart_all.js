@@ -37,7 +37,7 @@ function chart_all(container, data){
         .style("display", "block");
 
     // append vertical axis
-    parent.append("g")
+    svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y)
             .tickFormat(d3.format("$~f"))
