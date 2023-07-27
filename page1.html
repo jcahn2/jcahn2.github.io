@@ -23,7 +23,12 @@
                                     }
                             }
             );
-            ticker1 = data.slice(0,100)
+            ticker1 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2020-01-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2020-12-31")
+                )
+            })
             ticker2 = data.slice(101,200)
 
             chart('.container',ticker1)

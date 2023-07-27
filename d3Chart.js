@@ -79,9 +79,8 @@ function chart(container, data){
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
         Tooltip
-        .style("opacity", 1)
-        d3.select(this)
-        .style("stroke", "black")
+        .style("visibility", "visible")
+
     }
     var mousemove = function(d) {
         // Tooltip.html(d => `${formatDate(d.Date)}
@@ -98,9 +97,7 @@ function chart(container, data){
     }
     var mouseleave = function(d) {
         Tooltip
-        .style("opacity", 0)
-        d3.select(this)
-        .style("stroke", "none")
+        .style("visibility", "hidden")
 
     }
 
