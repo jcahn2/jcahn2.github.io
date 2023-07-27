@@ -75,7 +75,7 @@ function chart(container, data){
     g.append("line")
         .attr("y1", d => y(d.Open))
         .attr("y2", d => y(d.Close))
-        .attr("stroke-width", 8)
+        .attr("stroke-width", 5)
         .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8]);
