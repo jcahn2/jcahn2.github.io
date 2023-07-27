@@ -81,8 +81,6 @@ function chart_all(container, data){
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8]);
 
-    
-    body.scrollBy(width, 0);
 
     
     // Append a title (tooltip).
