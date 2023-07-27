@@ -2,10 +2,10 @@ function chart_all(container, data){
     ticker = data
                 
     // Declare the chart dimensions and margins.
-    const width = window.innerWidth * 7;
-    const height = 900;
+    const width = window.innerWidth * 10;
+    const height = 420;
     const marginTop = 20;
-    const marginRight = 30;
+    const marginRight = 20;
     const marginBottom = 60;
     const marginLeft = 30;
 

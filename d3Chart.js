@@ -71,6 +71,7 @@ function chart(container, data){
     var Tooltip = d3.select(container)
                     .append("div")
                         .style("opacity", 0)
+                        .style("position", "absolute")
                         .attr("class", "tooltip")
                         .style("border", "solid")
                         .style("border-width", "2px")
@@ -78,6 +79,11 @@ function chart(container, data){
                         .style("padding", "5px");
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
+        Tooltip.html(d => `${formatDate(d.Date)}
+            Open: ${formatValue(d.Open)}
+            Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
+            Low: ${formatValue(d.Low)}
+            High: ${formatValue(d.High)}`);
         Tooltip
         .style("opacity", 1)
         d3.select(this)
@@ -86,15 +92,8 @@ function chart(container, data){
     }
     var mousemove = function(d) {
         Tooltip
-            .html("tooltip text")
-        // .html(d => `${formatDate(d.Date)}
-        //         Open: ${formatValue(d.Open)}
-        //         Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-        //         Low: ${formatValue(d.Low)}
-        //         High: ${formatValue(d.High)}`)
         .style("left", (d3.mouse(this)[0]+70) + "px")
         .style("top", (d3.mouse(this)[1]) + "px")
-        console.log(d)
     }
     var mouseleave = function(d) {
         Tooltip
