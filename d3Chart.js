@@ -68,7 +68,7 @@ function chart(container, data){
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    var Tooltip = d3.select("#tooltip")
+    var Tooltip = d3.select(container)
                         .style("opacity", 0)
                         .style("position", "absolute")
                         .attr("class", "tooltip")
@@ -80,9 +80,8 @@ function chart(container, data){
     var mouseover = function(d) {
         Tooltip
         .style("opacity", 1)
-        // d3.select(this)
-        // .style("stroke", "black")
-        // .style("opacity", 1)
+        d3.select(this)
+        .style("stroke", "black")
     }
     var mousemove = function(d) {
         // Tooltip.html(d => `${formatDate(d.Date)}
@@ -94,15 +93,15 @@ function chart(container, data){
         
         Tooltip
         .style("position", "absolute")
-        .style("left", (x+100) + "px")
-        .style("top", (y+0) + "px")
+        .style("left", (d3.mouse(this)[0]+70) + "px")
+        .style("top", (d3.mouse(this)[1]+0) + "px")
     }
     var mouseleave = function(d) {
         Tooltip
         .style("opacity", 0)
-        // d3.select(this)
-        // .style("stroke", "none")
-        // .style("opacity", 0.8)
+        d3.select(this)
+        .style("stroke", "none")
+
     }
 
     // append lines to chart
