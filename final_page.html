@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <!-- Load d3.js -->
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+    <!-- Load d3-annotation -->
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+
+
+    <!-- load scripts -->
+    <script src="d3Chart.js"></script>
+    <script src="d3Chart_all.js"></script>
+
+    <!-- load csv -->
+    <script>
+        async function init() {
+            const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
+                function(d) {return {
+                                Date: d3.timeParse("%Y-%m-%d")(d.Date),
+                                Open: +d.Open,
+                                High: +d.High,
+                                Low: +d.Low,
+                                Close: +d.Close,
+                                Volume: +d.Volume
+                                    }
+                            }
+            );
+        
+            chart_all('.container',data)
+        }
+    </script>
+
+    <body onload="init()">
+        <p>total chart</p>
+
+        <div class="container"></div>
+    </body>
+
+</html>
+
