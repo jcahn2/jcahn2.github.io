@@ -10,19 +10,19 @@ function chart(container, data){
     const marginLeft = 40;
 
     // Declare the positional encodings.
-    var x = d3.scaleBand()
+    const x = d3.scaleBand()
         .domain(d3.utcDay
             .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
         .range([marginLeft, width - marginRight])
         .padding(0.2);
 
-    var y = d3.scaleLog()
+    const y = d3.scaleLog()
         .domain([d3.min(ticker, d => d.Low), d3.max(ticker, d => d.High)])
         .rangeRound([height - marginBottom, marginTop]);
 
     // Create the SVG container.
-    var svg = d3.select(container).append("svg")
+    const svg = d3.select(container).append("svg")
         .attr("viewBox", [0, 0, width, height]);
 
     // Append the axes.
@@ -52,7 +52,7 @@ function chart(container, data){
 
     
     // Create a group for each day of data, and append two lines to it.
-    var g = svg.append("g")
+    const g = svg.append("g")
             .attr("stroke-linecap", "round")
             .attr("stroke", "black")
         .selectAll("g")
