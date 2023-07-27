@@ -54,7 +54,7 @@ function chart(container, data){
         .call(g => g.select(".domain").remove());
 
     
-    // Create a group for each day of data, and append two lines to it.
+    // Create a group for each day of data
     const g = svg.append("g")
             .attr("stroke-linecap", "round")
             .attr("stroke", "black")
@@ -63,19 +63,6 @@ function chart(container, data){
         .join("g")
             .attr("transform", d => `translate(${x(d3.utcDay(d.Date))},0)`);
 
-    g.append("line")
-        .attr("y1", d => y(d.Low))
-        .attr("y2", d => y(d.High));
-
-    g.append("line")
-        .attr("y1", d => y(d.Open))
-        .attr("y2", d => y(d.Close))
-        .attr("stroke-width", 5)
-        .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
-            : d.Close > d.Open ? d3.schemeSet1[2]
-            : d3.schemeSet1[8]);
-
-    
     // Append a title (tooltip).
     const formatDate = d3.utcFormat("%B %-d, %Y");
     const formatValue = d3.format(".2f");
@@ -113,6 +100,28 @@ function chart(container, data){
         .style("stroke", "none")
         .style("opacity", 0.8)
     }
+
+    // append lines to chart
+    g.append("line")
+        .attr("y1", d => y(d.Low))
+        .attr("y2", d => y(d.High))
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave);
+
+    g.append("line")
+        .attr("y1", d => y(d.Open))
+        .attr("y2", d => y(d.Close))
+        .attr("stroke-width", 5)
+        .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
+            : d.Close > d.Open ? d3.schemeSet1[2]
+            : d3.schemeSet1[8])
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave);
+
+    
+    
 
     // add annotation
     // const annotations = [
