@@ -12,10 +12,9 @@ function chart(container, data){
     // Declare the positional encodings.
     const x = d3.scaleBand()
         .domain(d3.utcDay
-            .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
+            .range(d3.extent(ticker, d => d3.utcDay(d.Date)))
             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
         .range([marginLeft, width - marginRight]);
-    console.log(x.bandwidth());
     // const x = d3.scaleUtc()
     //         .domain(d3.extent(ticker, d => d3.utcDay(d.Date)))
     //         .range([marginLeft, width - marginRight]);
@@ -75,6 +74,7 @@ function chart(container, data){
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8]);
 
+    
     // Append a title (tooltip).
     const formatDate = d3.utcFormat("%B %-d, %Y");
     const formatValue = d3.format(".2f");
@@ -86,6 +86,19 @@ function chart(container, data){
     Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
     Low: ${formatValue(d.Low)}
     High: ${formatValue(d.High)}`);
+
+    // // add annotation
+    // const annotations = [
+    //     {
+    //         note: {
+    //             label: "annotation label",
+    //             title: "annotation title"
+    //         },
+    //         data: {
+    //             Date: 
+    //         }
+    //     }
+    // ]
 
 }
 
