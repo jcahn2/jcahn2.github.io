@@ -24,10 +24,7 @@ function chart(container, data){
     // Create the SVG container.
     var svg = d3.select(container).append("svg")
         .attr("viewBox", [0, 0, width, height]);
-}
 
-// Update function to transition
-function update(ticker) {
     // Append the axes.
     svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
@@ -91,6 +88,8 @@ function update(ticker) {
     Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
     Low: ${formatValue(d.Low)}
     High: ${formatValue(d.High)}`);
+
 }
+
 
 

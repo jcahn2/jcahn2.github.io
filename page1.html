@@ -30,10 +30,12 @@
     <!-- button functions -->
     <script>
         function chart1() {
-            update(ticker1)
+            d3.selectAll('svg').remove();
+            chart('.container',ticker1)
         }
         function chart2() {
-            update(ticker2)
+            d3.selectAll('svg').remove();
+            chart('.container',ticker2)
         }
     </script>
 
