@@ -22,16 +22,18 @@
             );
             ticker1 = data.slice(0,130)
             ticker2 = data.slice(131,300)
+
+            chart('.container',ticker1)
         }
     </script>
 
     <!-- button functions -->
     <script>
         function chart1() {
-            chart('.container',ticker1)
+            update(ticker1)
         }
         function chart2() {
-            chart('.container',ticker2)
+            update(ticker2)
         }
     </script>
 
