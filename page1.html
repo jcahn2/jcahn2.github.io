@@ -11,7 +11,7 @@
         async function init() {
             const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
                 function(d) {return {
-                                Date: d3.timeParse("%Y-%m-%d")(d.Date),
+                                Date: d.Date,
                                 Open: +d.Open,
                                 High: +d.High,
                                 Low: +d.Low,

@@ -2,7 +2,7 @@ function chart(container, data){
     ticker = data
                 
     // Declare the chart dimensions and margins.
-    const width = 928;
+    const width = 1000;
     const height = 600;
     const marginTop = 20;
     const marginRight = 30;
@@ -12,7 +12,7 @@ function chart(container, data){
     // Declare the positional encodings.
     const x = d3.scaleBand()
         .domain(d3.utcDay
-            .range(+ticker.at(0).Date, +ticker.at(-1).Date + 1)
+            .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
         .range([marginLeft, width - marginRight])
         .padding(0.2);
@@ -31,7 +31,7 @@ function chart(container, data){
         .call(d3.axisBottom(x)
         .tickValues(d3.utcMonday
             .every(width > 720 ? 1 : 2)
-            .range(ticker.at(0).Date, ticker.at(-1).Date))
+            .range(+ticker.at(0).Date - 1, ticker.at(-1).Date))
         .tickFormat(d3.utcFormat("%-m/%-d/%-Y")))
         .call(g => g.select(".domain").remove())
         .selectAll("text")
