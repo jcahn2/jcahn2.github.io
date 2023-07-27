@@ -10,14 +10,15 @@ function chart(container, data){
     const marginLeft = 40;
 
     // Declare the positional encodings.
-    const x = d3.scaleBand()
-        .domain(d3.utcDay
-            .range(d3.extent(ticker, d => d3.utcDay(d.Date)))
-            .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
-        .range([marginLeft, width - marginRight]);
-    // const x = d3.scaleUtc()
-    //         .domain(d3.extent(ticker, d => d3.utcDay(d.Date)))
-    //         .range([marginLeft, width - marginRight]);
+    // const x = d3.scaleBand()
+    //         .domain(d3.utcDay
+    //             .range(ticker.at(0).Date, +ticker.at(-1).Date + 1)
+    //             .filter(d => d.getUTCDay() !== 0 && d.getUTCDay() !== 6))
+    //         .range([marginLeft, width - marginRight])
+    //         .padding(0.2);
+    const x = d3.scaleUtc()
+            .domain(d3.extent(ticker, d => d3.utcDay(d.Date)))
+            .range([marginLeft, width - marginRight]);
 
     const y = d3.scaleLog()
         .domain([d3.min(ticker, d => d.Low), d3.max(ticker, d => d.High)])
@@ -26,6 +27,11 @@ function chart(container, data){
     // Create the SVG container.
     const svg = d3.select(container).append("svg")
         .attr("viewBox", [0, 0, width, height]);
+
+    // Create a div that holds two svg elements: one for the main chart and horizontal axis,
+    // which moves as the user scrolls the content; the other for the vertical axis (which 
+    // doesn’t scroll).
+    // const parent = d3.create("div");
 
     // Append the axes.
     svg.append("g")
@@ -69,7 +75,7 @@ function chart(container, data){
     g.append("line")
         .attr("y1", d => y(d.Open))
         .attr("y2", d => y(d.Close))
-        .attr("stroke-width", x.bandwidth())
+        .attr("stroke-width", 8)
         .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8]);
