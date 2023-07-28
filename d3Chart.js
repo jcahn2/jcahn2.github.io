@@ -167,8 +167,9 @@ function chart(container, data){
         // 2020 Coronavirus
         {
             note: {
-                label: `The Coronavirus Pandemic showed no discrimination in causing 
-                worldwide loss,
+                label: `Due to the Coronavirus Pandemic, the world suffered heavy losses, 
+                        not only in health, but also in economy and consequently stocks 
+                        as well.
                         `,
                 title: "2020 Coronavirus"
             },
