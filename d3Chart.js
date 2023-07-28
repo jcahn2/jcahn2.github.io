@@ -115,7 +115,7 @@ function chart(container, data){
             : d3.schemeSet1[8])
         .on("mouseover", mouseover)
         .on("mousemove", function(d){
-            Tooltip.html(d => `${formatDate(d.Date)}
+            Tooltip.html(`${formatDate(d.Date)}
             Open: ${formatValue(d.Open)}
             Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
             Low: ${formatValue(d.Low)}
