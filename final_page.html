@@ -24,7 +24,15 @@
                                     }
                             }
             );
-        
+
+            // division by year
+            ticker2006 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2008-09-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2008-12-01")
+                )
+            });
+
             chart_all('.container',data)
         }
     </script>

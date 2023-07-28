@@ -122,8 +122,7 @@ function chart(container, data){
             radiusPadding: 20   // white space around circle befor connector
           },
           color: ["red"],
-          x: 40,
-          y: 160,
+          data: {Date: "10/27/2008", Close: 11.85},
           dy: 70,
           dx: 70
         }
@@ -131,8 +130,17 @@ function chart(container, data){
     
     // Add annotation to the chart
     const makeAnnotations = d3.annotation()
+        .type(d3.annotationLabel)
+        .accessors({
+            x: d => x(d3.timeParse("%m/%d/%Y")(d.Date)),
+            y: d => y(d.Close)
+        })
+        .accesorsInverse({
+            date: d => d3.timeFormat("%m/%d/%Y")(x.invert(d.x)),
+            close: d => y.invert(d.y)
+        })
         .annotations(annotations)
-    d3.select("#annotation")
+    d3.select("svg")
         .append("g")
         .call(makeAnnotations)
 }
