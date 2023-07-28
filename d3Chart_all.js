@@ -36,6 +36,13 @@ function chart_all(container, data){
         .attr("height", height)
         .style("display", "block");
 
+    // Create the zoom behavior.
+    const zoom = d3.zoom()
+        .scaleExtent([1, 32])
+        .extent([[marginLeft, 0], [width - marginRight, height]])
+        .translateExtent([[marginLeft, -Infinity], [width - marginRight, Infinity]])
+        .on("zoom", zoomed);
+
     // append vertical axis
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
@@ -97,18 +104,18 @@ function chart_all(container, data){
     Low: ${formatValue(d.Low)}
     High: ${formatValue(d.High)}`);
 
-    // // add annotation
-    // const annotations = [
-    //     {
-    //         note: {
-    //             label: "annotation label",
-    //             title: "annotation title"
-    //         },
-    //         data: {
-    //             Date: 
-    //         }
-    //     }
-    // ]
+    // When zooming, redraw the area and the x axis.
+    function zoomed(event) {
+        const xz = event.transform.rescaleX(x);
+        path.attr("d", area(data, xz));
+        gx.call(xAxis, xz);
+    }
+
+    // Initial zoom.
+    svg.call(zoom)
+        .transition()
+        .duration(750)
+        .call(zoom.scaleTo, 4, [x(Date.UTC(2006, 5, 29)), 0]);
 
 }
 

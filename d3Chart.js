@@ -112,40 +112,78 @@ function chart(container, data){
     // annotations
     const annotations = [
         {
-        note: {
-            label: "Here is the annotation label",
-            title: "Annotation title"
+            // 2008 recession event
+            note: {
+                label: "Here is the annotation label",
+                title: "2008 Recession"
+            },
+            type: d3.annotationCalloutCircle,
+            subject: {
+                radius: 20,         // circle radius
+                radiusPadding: 20   // white space around circle befor connector
+            },
+            color: ["red"],
+            data: {Date: "09/29/2008", Close: 15.75},
+            dy: -40,
+            dx: 70
         },
-        type: d3.annotationCalloutCircle,
-        subject: {
-            radius: 20,         // circle radius
-            radiusPadding: 20   // white space around circle befor connector
-        },
-        color: ["red"],
-        data: {Date: "10/27/2008", Close: 11.85},
-        dy: 70,
-        dx: 70
-        },
+
+            // 2015 stock market selloff
         {
-        note: {
-            label: "Here is the annotation label",
-            title: "Annotation title2"
+            note: {
+                label: "Here is the annotation label",
+                title: "2015 Stock Market Selloff"
+            },
+            type: d3.annotationCalloutCircle,
+            subject: {
+                radius: 20,         // circle radius
+                radiusPadding: 20   // white space around circle befor connector
+            },
+            color: ["red"],
+            data: {Date: "08/24/2015", Close: 84.52},
+            dy: 70,
+            dx: 70
         },
-        type: d3.annotationCalloutCircle,
-        subject: {
-            radius: 20,         // circle radius
-            radiusPadding: 20   // white space around circle befor connector
+        
+            // 2018 cryptocurrency crash
+        {
+            note: {
+                label: "Here is the annotation label",
+                title: "2018 Cryptocurrency Crash"
+            },
+            type: d3.annotationCalloutCircle,
+            subject: {
+                radius: 20,         // circle radius
+                radiusPadding: 20   // white space around circle befor connector
+            },
+            color: ["red"],
+            data: {Date: "08/24/2015", Close: 84.52},
+            dy: 70,
+            dx: 70
         },
-        color: ["red"],
-        data: {Date: "08/24/2015", Close: 84.52},
-        dy: 70,
-        dx: 70
-        }
+
+        // 2020 Coronavirus
+        {
+            note: {
+                label: "Here is the annotation label",
+                title: "2020 Coronavirus"
+            },
+            type: d3.annotationCalloutCircle,
+            subject: {
+                radius: 20,         // circle radius
+                radiusPadding: 20   // white space around circle befor connector
+            },
+            color: ["red"],
+            data: {Date: "02/20/2020", Close: 341.39},
+            dy: 70,
+            dx: 70
+        },
+
+            
     ]
     
     // Add annotation to the chart
     const makeAnnotations = d3.annotation()
-        .editMode(true)
         .type(d3.annotationLabel)
         .accessors({
             x: d => x(d3.timeParse("%m/%d/%Y")(d.Date)),
