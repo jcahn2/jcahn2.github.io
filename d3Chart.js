@@ -135,7 +135,7 @@ function chart(container, data){
             x: d => x(d3.timeParse("%m/%d/%Y")(d.Date)),
             y: d => y(d.Close)
         })
-        .accesorsInverse({
+        .accessorsInverse({
             date: d => d3.timeFormat("%m/%d/%Y")(x.invert(d.x)),
             close: d => y.invert(d.y)
         })
