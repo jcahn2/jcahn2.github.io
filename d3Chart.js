@@ -159,7 +159,7 @@ function chart(container, data){
             color: ["red"],
             data: {Date: "01/22/2018", Close: 165.00},
             dy: -100,
-            dx: 70
+            dx: 40
         },
 
         // 2020 Coronavirus

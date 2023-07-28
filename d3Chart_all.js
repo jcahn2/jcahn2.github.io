@@ -60,7 +60,7 @@ function chart_all(container, data){
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
             .attr("transform", "rotate(-75)");
-    svg.append("g")
+    const gx = svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(xAxis, x);
         
@@ -112,7 +112,7 @@ function chart_all(container, data){
     // When zooming, redraw the area and the x axis.
     function zoomed(event) {
         const xz = event.transform.rescaleX(x);
-        path.attr("d", area(data, xz));
+        g.attr("transform", d => `translate(${xz(d3.utcDay(d.Date))},0)`);
         gx.call(xAxis, xz);
     }
 
