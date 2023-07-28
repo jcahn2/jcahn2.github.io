@@ -68,7 +68,7 @@ function chart(container, data){
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    var Tooltip = d3.select(container)
+    var Tooltip = d3.select("#tooltip")
                         .style("opacity", 0)
                         .style("position", "absolute")
                         .style("border", "solid")
@@ -91,8 +91,8 @@ function chart(container, data){
         
         Tooltip
         .style("position", "absolute")
-        .style("left", (d3.mouse(this)[0]+70) + "px")
-        .style("top", (d3.mouse(this)[1]+0) + "px")
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY) + "px")
     }
     var mouseleave = function(d) {
         Tooltip
@@ -112,6 +112,9 @@ function chart(container, data){
         .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8])
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave);
     
 
     
