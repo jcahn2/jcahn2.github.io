@@ -2,14 +2,13 @@ function chart_all(container, data){
     ticker = data
                 
     // Declare the chart dimensions and margins.
-    const width = window.innerWidth * 10;
+    const width = 1000;
     const height = 420;
     const marginTop = 20;
     const marginRight = 20;
     const marginBottom = 60;
     const marginLeft = 30;
 
-    // Declare the positional encodings.
     const x = d3.scaleUtc()
             .domain(d3.extent(ticker, d => d3.utcDay(d.Date)))
             .range([marginLeft, width - marginRight]);
@@ -18,25 +17,25 @@ function chart_all(container, data){
         .domain([d3.min(ticker, d => d.Low), d3.max(ticker, d => d.High)])
         .rangeRound([height - marginBottom, marginTop]);
 
-    
-    // Create a div that holds two svg elements: one for the main chart and horizontal axis,
-    // which moves as the user scrolls the content; the other for the vertical axis (which 
-    // doesn’t scroll).
-    const parent = d3.select(container).append("div");
+    // Create the SVG container.
+    const svg = d3.select(container).append("svg")
+        .attr("viewBox", [0, 0, width, height]);
 
-    
-    // create scrolling div containing horizontal axis
-    const body = parent.append("div")
-            .style("overflow-x", "scroll")
-            .style("-webkit-overflow-scrolling", "touch");
-    
-    // Create the SVG
-    const svg = body.append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .style("display", "block");
+    // Append the axes.
+    svg.append("g")
+        .attr("transform", `translate(0,${height - marginBottom})`)
+        .call(d3.axisBottom(x)
+        .tickValues(d3.utcMonday
+            .every(4)
+            .range(+ticker.at(0).Date - 1, ticker.at(-1).Date))
+        .tickFormat(d3.utcFormat("%-m/%-d/%-Y")))
+        .call(g => g.select(".domain").remove())
+        .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)");
 
-    // append vertical axis
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y)
@@ -47,80 +46,54 @@ function chart_all(container, data){
             .attr("x2", (width - marginLeft - marginRight)))
         .call(g => g.select(".domain").remove());
 
-    // Append the horizontal axis.
-    const xAxis = (g,x) => g
-        .call(d3.axisBottom(x)
-        .tickValues(d3.utcMonday
-            .every(width > 720 ? 1 : 2)
-            .range(+ticker.at(0).Date - 1, ticker.at(-1).Date))
-        .tickFormat(d3.utcFormat("%-m/%-d/%-Y")))
-        .call(g => g.select(".domain").remove())
-        .selectAll("text")
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", "rotate(-75)");
-    const gx = svg.append("g")
-        .attr("transform", `translate(0,${height - marginBottom})`)
-        .call(xAxis, x);
-        
-
-    // Create a group for each day of data, and append two lines to it.
+    
+    // Create a group for each day of data
     const g = svg.append("g")
-            .attr("stroke-linecap", "round")
-            .attr("stroke", "black")
         .selectAll("g")
         .data(ticker)
         .join("g")
             .attr("transform", d => `translate(${x(d3.utcDay(d.Date))},0)`);
 
-    g.append("line")
-        .attr("y1", d => y(d.Low))
-        .attr("y2", d => y(d.High));
-
-    g.append("line")
-        .attr("y1", d => y(d.Open))
-        .attr("y2", d => y(d.Close))
-        .attr("stroke-width", 3)
-        .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
-            : d.Close > d.Open ? d3.schemeSet1[2]
-            : d3.schemeSet1[8]);
-
-
-    
     // Append a title (tooltip).
     const formatDate = d3.utcFormat("%B %-d, %Y");
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
-    g.append("title")
-        .text(d => `${formatDate(d.Date)}
-    Open: ${formatValue(d.Open)}
-    Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-    Low: ${formatValue(d.Low)}
-    High: ${formatValue(d.High)}`);
+    // tooltip definition
+    var Tooltip = d3.select("#tooltip")
+                        .style("opacity", 0)
+                        .style("position", "absolute")
+                        .style("border", "solid")
+                        .style("border-width", "2px")
+                        .style("border-radius", "3px")
+                        .style("padding", "5px");
 
-
-    // Create the zoom behavior.
-    const zoom = d3.zoom()
-        .scaleExtent([1, 32])
-        .extent([[marginLeft, 0], [width - marginRight, height]])
-        .translateExtent([[marginLeft, -Infinity], [width - marginRight, Infinity]])
-        .on("zoom", zoomed);
-
+    // append lines to chart
+    g.append("path")
+        .attr("d", d3.line()
+            .x(d => x(d3.utcDay(d.Date)))
+            .y(d => d.Open)
+        )
+        .attr("stroke", d3.schemeSet2[0])
+        .style("stroke-width",4)
+        .style("fill", "none")
+        .on("mouseover", function(d){
+            Tooltip.style("opacity",1)
+        })
+        .on("mousemove", function(d){
+            Tooltip.html(`${formatDate(d.Date)}
+            Open: ${formatValue(d.Open)}`
+            );
+            
+            Tooltip
+            .style("position", "absolute")
+            .style("left", (d3.event.pageX + 50) + "px")
+            .style("top", (d3.event.pageY) + "px")
+        })
+        .on("mouseleave", function(d){
+            Tooltip.style("opacity",0)
+        });
     
-    // When zooming, redraw the area and the x axis.
-    function zoomed(event) {
-        const xz = event.transform.rescaleX(x);
-        g.attr("transform", d => `translate(${xz(d3.utcDay(d.Date))},0)`);
-        gx.call(xAxis, xz);
-    }
-
-    // Initial zoom.
-    svg.call(zoom)
-        .transition()
-        .duration(750)
-        .call(zoom.scaleTo, 4, [x(Date.UTC(2006, 5, 29)), 0]);
 
 }
 

@@ -52,15 +52,37 @@
                     d.Date <= d3.timeParse("%Y-%m-%d")("2020-06-25")
                 )
             });
-            // ticker1 = data.slice(-200);
+            
+            // all data
+            // get month returns month, 0 = January
+            ticker_all = data.filter(function(d){
+                return (
+                    d.Date.getMonth() == 0
+                )
+            });
 
 
-            chart('.container',ticker_start);
+            chart_all('.container',ticker_all);
         }
     </script>
 
     <!-- button functions -->
     <script>
+        // overview chart
+        function overview_chart() {
+            d3.selectAll('svg').remove();
+            chart_all('.container',ticker_all);
+
+            // change year title and description
+            document.getElementById("yearTitle")
+                .innerHTML = "2006-2021";
+            document.getElementById("drop_event")
+                .innerHTML = `
+                    Overview
+                `;
+
+        }
+
         function chart2008() {
             d3.selectAll('svg').remove();
             chart('.container',ticker2008);
@@ -147,6 +169,10 @@
                 </a>
             </p>
         </div>
+
+        <button onClick="overview_chart()">
+            overview
+        </button>
         <button onClick="chart2008()">
             2008
         </button>
@@ -158,11 +184,6 @@
         </button>
         <button onClick="chart2020()">
             2020
-        </button>
-        <button>
-            <a href="https://jcahn2.github.io/final_page.html">
-                Overview
-            </a>
         </button>
 
         <div class="container"></div>
