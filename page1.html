@@ -55,10 +55,10 @@
             });
             
             // all data
-            // get month returns month, 0 = January
+            // getDay returns day of week, 1 = Monday
             ticker_all = data.filter(function(d){
                 return (
-                    d.Date.getMonth() == 0
+                    d.Date.getDay() == 1
                 )
             });
 
@@ -162,7 +162,7 @@
             </p>
         </div>
         <div>
-            <h3 id="yearTitle"></h3>
+            <h3 id="yearTitle">Overview</h3>
             <p id="drop_event">
                 More information about recessional events can be found at 
                 <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns">

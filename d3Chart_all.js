@@ -26,7 +26,7 @@ function chart_all(container, data){
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(d3.axisBottom(x)
         .tickValues(d3.utcMonday
-            .every(4)
+            .every(8)
             .range(+ticker.at(0).Date - 1, ticker.at(-1).Date))
         .tickFormat(d3.utcFormat("%-m/%-d/%-Y")))
         .call(g => g.select(".domain").remove())
@@ -46,14 +46,6 @@ function chart_all(container, data){
             .attr("x2", (width - marginLeft - marginRight)))
         .call(g => g.select(".domain").remove());
 
-    
-    // Create a group for each day of data
-    const g = svg.append("g")
-        .selectAll("g")
-        .data(ticker)
-        .join("g")
-            .attr("transform", d => `translate(${x(d3.utcDay(d.Date))},0)`);
-
     // Append a title (tooltip).
     const formatDate = d3.utcFormat("%B %-d, %Y");
     const formatValue = d3.format(".2f");
@@ -67,16 +59,19 @@ function chart_all(container, data){
                         .style("border-width", "2px")
                         .style("border-radius", "3px")
                         .style("padding", "5px");
-
-    // append lines to chart
-    g.append("path")
+    
+    // Create a group for each day of data
+    const g = svg.append("g")
+        .selectAll("g")
+        .data(ticker)
+        .append("path")
         .attr("d", d3.line()
             .x(d => x(d3.utcDay(d.Date)))
             .y(d => d.Open)
         )
-        .attr("stroke", d3.schemeSet2[0])
-        .style("stroke-width",4)
-        .style("fill", "none")
+            .attr("stroke", d3.schemeSet2[0])
+            .style("stroke-width",4)
+            .style("fill", "none")
         .on("mouseover", function(d){
             Tooltip.style("opacity",1)
         })
@@ -93,7 +88,7 @@ function chart_all(container, data){
         .on("mouseleave", function(d){
             Tooltip.style("opacity",0)
         });
-    
+
 
 }
 
