@@ -23,6 +23,7 @@
                                     }
                             }
             );
+            ticker_start = data.slice(-130);
             ticker2020 = data.filter(function(d){
                 return (
                     d.Date >= d3.timeParse("%Y-%m-%d")("2020-01-01") &&
@@ -52,27 +53,64 @@
                 )
             });
 
-            chart('.container',ticker2008);
+            chart('.container',ticker_start);
         }
     </script>
 
     <!-- button functions -->
     <script>
-        function chart1() {
+        function chart2008() {
             d3.selectAll('svg').remove();
             chart('.container',ticker2008);
+
+            // change year title
+            document.getElementById("yearTitle")
+                .innerHTML = "2008";
+
         }
-        function chart2() {
+        
+        function chart2015() {
+            d3.selectAll('svg').remove();
+            chart('.container',ticker2015);
+
+            // change year title
+            document.getElementById("yearTitle")
+                .innerHTML = "2015";
+
+        }
+
+        function chart2018() {
+            d3.selectAll('svg').remove();
+            chart('.container',chart2018);
+
+            // change year title
+            document.getElementById("yearTitle")
+                .innerHTML = "2018";
+        }
+
+        function chart2020() {
             d3.selectAll('svg').remove();
             chart('.container',ticker2020);
+
+            // change year title
+            document.getElementById("yearTitle")
+                .innerHTML = "2020";
         }
     </script>
 
     <body onload="init()">
-        <button onClick="chart1()">
+        <title>Stock data</title>
+        <div id="yearTitle">Year</div>
+        <button onClick="chart2008()">
             2008
         </button>
-        <button onClick="chart2()">
+        <button onClick="chart2015()">
+            2008
+        </button>
+        <button onClick="chart2018()">
+            2008
+        </button>
+        <button onClick="chart2020()">
             2020
         </button>
 

@@ -68,37 +68,14 @@ function chart(container, data){
     const formatValue = d3.format(".2f");
     const formatChange = ((f) => (y0, y1) => f((y1 - y0) / y0))(d3.format("+.2%"));
 
+    // tooltip definition
     var Tooltip = d3.select("#tooltip")
                         .style("opacity", 0)
                         .style("position", "absolute")
                         .style("border", "solid")
                         .style("border-width", "2px")
-                        .style("border-radius", "5px")
+                        .style("border-radius", "3px")
                         .style("padding", "5px");
-    // Three function that change the tooltip when user hover / move / leave a cell
-    var mouseover = function(d) {
-        Tooltip
-            .style("opacity", 1)
-
-    }
-    var mousemove = function(d) {
-        Tooltip.html(d => `${formatDate(d.Date)}
-            Open: ${formatValue(d.Open)}
-            Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-            Low: ${formatValue(d.Low)}
-            High: ${formatValue(d.High)}`);
-        // Tooltip.html("tooltip test");
-        
-        Tooltip
-        .style("position", "absolute")
-        .style("left", (d3.event.pageX + 50) + "px")
-        .style("top", (d3.event.pageY) + "px")
-    }
-    var mouseleave = function(d) {
-        Tooltip
-            .style("opacity", 0)
-
-    }
 
     // append lines to chart
     g.append("line")
@@ -113,7 +90,9 @@ function chart(container, data){
         .attr("stroke", d => d.Open > d.Close ? d3.schemeSet1[0]
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8])
-        .on("mouseover", mouseover)
+        .on("mouseover", function(d){
+            Tooltip.style("opacity",1)
+        })
         .on("mousemove", function(d){
             Tooltip.html(`${formatDate(d.Date)}
             Open: ${formatValue(d.Open)}
@@ -126,7 +105,9 @@ function chart(container, data){
             .style("left", (d3.event.pageX + 50) + "px")
             .style("top", (d3.event.pageY) + "px")
         })
-        .on("mouseleave", mouseleave);
+        .on("mouseleave", function(d){
+            Tooltip.style("opacity",0)
+        });
     
 
     
