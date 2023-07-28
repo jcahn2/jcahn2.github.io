@@ -82,16 +82,16 @@ function chart(container, data){
 
     }
     var mousemove = function(d) {
-        // Tooltip.html(d => `${formatDate(d.Date)}
-        //     Open: ${formatValue(d.Open)}
-        //     Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
-        //     Low: ${formatValue(d.Low)}
-        //     High: ${formatValue(d.High)}`);
-        Tooltip.html("tooltip test");
+        Tooltip.html(d => `${formatDate(d.Date)}
+            Open: ${formatValue(d.Open)}
+            Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
+            Low: ${formatValue(d.Low)}
+            High: ${formatValue(d.High)}`);
+        // Tooltip.html("tooltip test");
         
         Tooltip
         .style("position", "absolute")
-        .style("left", (d3.event.pageX) + "px")
+        .style("left", (d3.event.pageX + 50) + "px")
         .style("top", (d3.event.pageY) + "px")
     }
     var mouseleave = function(d) {
@@ -113,7 +113,7 @@ function chart(container, data){
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8])
         .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
+        .on("mousemove", mousemove(ticker))
         .on("mouseleave", mouseleave);
     
 
