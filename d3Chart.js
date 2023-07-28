@@ -114,7 +114,7 @@ function chart(container, data){
         {
             // 2008 recession event
             note: {
-                label: "Here is the annotation label",
+                label: "9/29 - stock market fell 777.68 points in a day",
                 title: "2008 Recession"
             },
             type: d3.annotationCalloutCircle,
@@ -122,7 +122,7 @@ function chart(container, data){
                 radius: 20,         // circle radius
                 radiusPadding: 20   // white space around circle befor connector
             },
-            color: ["red"],
+            color: ["green"],
             data: {Date: "09/29/2008", Close: 15.75},
             dy: -70,
             dx: 70
@@ -131,7 +131,8 @@ function chart(container, data){
             // 2015 stock market selloff
         {
             note: {
-                label: "Here is the annotation label",
+                label: `Approximately when the worldwide stock market selloffs
+                        began affecting US stocks`,
                 title: "2015 Stock Market Selloff"
             },
             type: d3.annotationCalloutCircle,
@@ -139,7 +140,7 @@ function chart(container, data){
                 radius: 20,         // circle radius
                 radiusPadding: 20   // white space around circle befor connector
             },
-            color: ["red"],
+            color: ["green"],
             data: {Date: "08/24/2015", Close: 84.52},
             dy: 70,
             dx: 70
@@ -148,7 +149,8 @@ function chart(container, data){
             // 2018 cryptocurrency crash
         {
             note: {
-                label: "Here is the annotation label",
+                label: `While Bitcoin and other cryptocurrencies were crashing, 
+                        MasterCard seemed to rise steadily, unaffected`,
                 title: "2018 Cryptocurrency Crash"
             },
             type: d3.annotationCalloutCircle,
@@ -156,7 +158,7 @@ function chart(container, data){
                 radius: 20,         // circle radius
                 radiusPadding: 20   // white space around circle befor connector
             },
-            color: ["red"],
+            color: ["green"],
             data: {Date: "01/22/2018", Close: 165.00},
             dy: -100,
             dx: 40
@@ -165,7 +167,9 @@ function chart(container, data){
         // 2020 Coronavirus
         {
             note: {
-                label: "Here is the annotation label",
+                label: `The Coronavirus Pandemic showed no discrimination in causing 
+                worldwide loss,
+                        `,
                 title: "2020 Coronavirus"
             },
             type: d3.annotationCalloutCircle,
@@ -173,7 +177,7 @@ function chart(container, data){
                 radius: 20,         // circle radius
                 radiusPadding: 20   // white space around circle befor connector
             },
-            color: ["red"],
+            color: ["green"],
             data: {Date: "02/20/2020", Close: 341.39},
             dy: 20,
             dx: 70
