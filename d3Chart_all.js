@@ -36,13 +36,6 @@ function chart_all(container, data){
         .attr("height", height)
         .style("display", "block");
 
-    // Create the zoom behavior.
-    const zoom = d3.zoom()
-        .scaleExtent([1, 32])
-        .extent([[marginLeft, 0], [width - marginRight, height]])
-        .translateExtent([[marginLeft, -Infinity], [width - marginRight, Infinity]])
-        .on("zoom", zoomed);
-
     // append vertical axis
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
@@ -55,8 +48,7 @@ function chart_all(container, data){
         .call(g => g.select(".domain").remove());
 
     // Append the horizontal axis.
-    svg.append("g")
-        .attr("transform", `translate(0,${height - marginBottom})`)
+    const xAxis = (g,x) => g
         .call(d3.axisBottom(x)
         .tickValues(d3.utcMonday
             .every(width > 720 ? 1 : 2)
@@ -68,6 +60,10 @@ function chart_all(container, data){
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
             .attr("transform", "rotate(-75)");
+    svg.append("g")
+        .attr("transform", `translate(0,${height - marginBottom})`)
+        .call(xAxis, x);
+        
 
     // Create a group for each day of data, and append two lines to it.
     const g = svg.append("g")
@@ -104,6 +100,15 @@ function chart_all(container, data){
     Low: ${formatValue(d.Low)}
     High: ${formatValue(d.High)}`);
 
+
+    // Create the zoom behavior.
+    const zoom = d3.zoom()
+        .scaleExtent([1, 32])
+        .extent([[marginLeft, 0], [width - marginRight, height]])
+        .translateExtent([[marginLeft, -Infinity], [width - marginRight, Infinity]])
+        .on("zoom", zoomed);
+
+    
     // When zooming, redraw the area and the x axis.
     function zoomed(event) {
         const xz = event.transform.rescaleX(x);

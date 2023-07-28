@@ -65,9 +65,16 @@
             d3.selectAll('svg').remove();
             chart('.container',ticker2008);
 
-            // change year title
+            // change year title and description
             document.getElementById("yearTitle")
                 .innerHTML = "2008";
+            document.getElementById("drop_event")
+                .innerHTML = `
+                    During 2008, a recession with multiple shocks to the economy saw the stock market
+                    fall about 700 points within a single day. At this point, this had been the 
+                    biggest drop in history. The effect can be seen consistent decline of the 
+                    MasterCard stocks during the last months of 2008.
+                `;
 
         }
         
@@ -75,9 +82,13 @@
             d3.selectAll('svg').remove();
             chart('.container',ticker2015);
 
-            // change year title
+            // change year title and description
             document.getElementById("yearTitle")
                 .innerHTML = "2015";
+            document.getElementById("drop_event")
+                .innerHTML = `
+
+                `;
 
         }
 
@@ -85,29 +96,45 @@
             d3.selectAll('svg').remove();
             chart('.container',ticker2018);
 
-            // change year title
+            // change year title and description
             document.getElementById("yearTitle")
                 .innerHTML = "2018";
+            document.getElementById("drop_event")
+                .innerHTML = `
+
+                `;
         }
 
         function chart2020() {
             d3.selectAll('svg').remove();
             chart('.container',ticker2020);
 
-            // change year title
+            // change year title and description
             document.getElementById("yearTitle")
                 .innerHTML = "2020";
+            document.getElementById("drop_event")
+                .innerHTML = `
+
+                `;
         }
     </script>
 
     <body onload="init()">
         <div>
-            <h1>Title Here</h1>
+            <h1>MasterCard Stock History</h1>
+            <p>
+                Over recent years, there have been several crashes in the stock market.
+                These candlestick charts show the correlation of significant events through
+                MasterCard stocks. 
+            </p>
         </div>
         <div>
-            <h3 id="yearTitle">2021</h3>
-            <p>
-                "description about drop in stocks for this year"
+            <h3 id="yearTitle"></h3>
+            <p id="drop_event">
+                More information about recessional events can be found at 
+                <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns">
+                    Investopedia.com.
+                </a>
             </p>
         </div>
         <button onClick="chart2008()">

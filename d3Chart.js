@@ -124,7 +124,7 @@ function chart(container, data){
             },
             color: ["red"],
             data: {Date: "09/29/2008", Close: 15.75},
-            dy: -40,
+            dy: -70,
             dx: 70
         },
 
@@ -157,8 +157,8 @@ function chart(container, data){
                 radiusPadding: 20   // white space around circle befor connector
             },
             color: ["red"],
-            data: {Date: "08/24/2015", Close: 84.52},
-            dy: 70,
+            data: {Date: "01/22/2018", Close: 165.00},
+            dy: -100,
             dx: 70
         },
 
@@ -175,7 +175,7 @@ function chart(container, data){
             },
             color: ["red"],
             data: {Date: "02/20/2020", Close: 341.39},
-            dy: 70,
+            dy: 20,
             dx: 70
         },
 
