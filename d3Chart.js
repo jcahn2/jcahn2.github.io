@@ -132,7 +132,6 @@ function chart(container, data){
     // Add annotation to the chart
     const makeAnnotations = d3.annotation()
         .annotations(annotations)
-        .style("position", "absolute")
     d3.select("#annotation")
         .append("g")
         .call(makeAnnotations)
