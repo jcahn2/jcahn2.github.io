@@ -109,23 +109,33 @@ function chart(container, data){
             Tooltip.style("opacity",0)
         });
     
-
+    // annotations
+    const annotations = [
+        {
+          note: {
+            label: "Here is the annotation label",
+            title: "Annotation title"
+          },
+          type: d3.annotationCalloutCircle,
+          subject: {
+            radius: 20,         // circle radius
+            radiusPadding: 20   // white space around circle befor connector
+          },
+          color: ["red"],
+          x: 40,
+          y: 160,
+          dy: 70,
+          dx: 70
+        }
+    ]
     
-    
-
-    // add annotation
-    // const annotations = [
-    //     {
-    //         note: {
-    //             label: "annotation label",
-    //             title: "annotation title"
-    //         },
-    //         data: {
-    //             Date: 
-    //         }
-    //     }
-    // ]
-
+    // Add annotation to the chart
+    const makeAnnotations = d3.annotation()
+        .annotations(annotations)
+        .style("position", "absolute")
+    d3.select("#annotation")
+        .append("g")
+        .call(makeAnnotations)
 }
 
 
