@@ -25,10 +25,9 @@ function chart_all(container, data){
     svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(d3.axisBottom(x)
-        .tickValues(d3.utcMonday
-            .every(8)
-            .range(+ticker.at(0).Date - 1, ticker.at(-1).Date))
-        .tickFormat(d3.utcFormat("%-m/%-d/%-Y")))
+        .tickValues(d3.utcMonth
+            .range(+ticker.at(0).Date - 5, ticker.at(-1).Date), 3)
+        .tickFormat(d3.utcFormat("%-m/%-Y")))
         .call(g => g.select(".domain").remove())
         .selectAll("text")
             .style("text-anchor", "end")
@@ -67,7 +66,7 @@ function chart_all(container, data){
         .append("path")
         .attr("d", d3.line()
             .x(d => x(d3.utcDay(d.Date)))
-            .y(d => d.Open)
+            .y(d => +d.Open)
         )
             .attr("stroke", d3.schemeSet2[0])
             .style("stroke-width",4)
