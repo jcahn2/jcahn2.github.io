@@ -114,7 +114,18 @@ function chart(container, data){
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8])
         .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
+        .on("mousemove", function(d){
+            Tooltip.html(d => `${formatDate(d.Date)}
+            Open: ${formatValue(d.Open)}
+            Close: ${formatValue(d.Close)} (${formatChange(d.Open, d.Close)})
+            Low: ${formatValue(d.Low)}
+            High: ${formatValue(d.High)}`);
+            
+            Tooltip
+            .style("position", "absolute")
+            .style("left", (d3.event.pageX + 50) + "px")
+            .style("top", (d3.event.pageY) + "px")
+        })
         .on("mouseleave", mouseleave);
     
 

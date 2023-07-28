@@ -23,7 +23,7 @@
                                     }
                             }
             );
-            ticker1 = data.filter(function(d){
+            ticker2020 = data.filter(function(d){
                 return (
                     d.Date >= d3.timeParse("%Y-%m-%d")("2020-01-01") &&
                     d.Date <= d3.timeParse("%Y-%m-%d")("2020-06-25")
@@ -31,17 +31,24 @@
             });
             // ticker1 = data.slice(-200);
 
-            ticker2 = data.filter(function(d){
+            ticker2018 = data.filter(function(d){
                 return (
                     d.Date >= d3.timeParse("%Y-%m-%d")("2018-01-01") &&
                     d.Date <= d3.timeParse("%Y-%m-%d")("2018-05-20")
                 )
             });
 
-            ticker3 = data.filter(function(d){
+            ticker2015 = data.filter(function(d){
                 return (
                     d.Date >= d3.timeParse("%Y-%m-%d")("2015-06-01") &&
                     d.Date <= d3.timeParse("%Y-%m-%d")("2016-03-01")
+                )
+            });
+
+            ticker2008 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2008-09-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2008-12-01")
                 )
             });
 
@@ -53,20 +60,20 @@
     <script>
         function chart1() {
             d3.selectAll('svg').remove();
-            chart('.container',ticker1);
+            chart('.container',ticker2008);
         }
         function chart2() {
             d3.selectAll('svg').remove();
-            chart('.container',ticker2);
+            chart('.container',ticker2020);
         }
     </script>
 
     <body onload="init()">
         <button onClick="chart1()">
-            chart 1
+            2008
         </button>
         <button onClick="chart2()">
-            chart 2
+            2020
         </button>
 
         <div class="container"></div>
