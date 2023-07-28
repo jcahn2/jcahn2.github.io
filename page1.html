@@ -4,11 +4,13 @@
     <script src='https://d3js.org/d3.v5.min.js'></script>
     <!-- Load d3-annotation -->
     <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-
+    <!-- Color Scale -->
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
     <!-- load scripts -->
     <script src="d3Chart.js"></script>
     <script src="d3Chart_all.js"></script>
+    
 
     <!-- load csv -->
     <script>
@@ -58,7 +60,8 @@
             // getDay returns day of week, 1 = Monday
             ticker_all = data.filter(function(d){
                 return (
-                    d.Date.getDay() == 1
+                    d.Date.getDay() == 1 &&
+                    d.Date.getMonth() in [0,6]
                 )
             });
 
@@ -68,11 +71,14 @@
     </script>
 
     <!-- button functions -->
-    <script>
+    <script>       
         // overview chart
         function overview_chart() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
             chart_all('.container',ticker_all);
+            
 
             // change year title and description
             document.getElementById("yearTitle")
@@ -86,6 +92,8 @@
 
         function chart2008() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
             chart('.container',ticker2008);
 
             // change year title and description
@@ -170,6 +178,9 @@
                 </a>
             </p>
         </div>
+
+        <!-- select button -->
+        <select id="selectButton"></select>
 
         <button onClick="overview_chart()">
             overview
