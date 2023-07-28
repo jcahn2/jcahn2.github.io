@@ -161,44 +161,53 @@
     </script>
 
     <body onload="init()">
-        <div>
-            <h1>MasterCard Stock History</h1>
-            <p>
-                Over recent years, there have been several crashes in the stock market.
-                These candlestick charts show the correlation of significant events through
-                MasterCard stocks. 
-            </p>
-        </div>
-        <div>
+        <center>
+            <div>
+                <h1>MasterCard Stock History</h1>
+                <p>
+                    Over recent years, there have been several crashes in the stock market.
+                    These candlestick charts show the correlation of significant events through
+                    MasterCard stocks. 
+                </p>
+                <p id="drop_event">
+                    More information about recessional events can be found at 
+                    <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns">
+                        Investopedia.com.
+                    </a>
+                </p>
+            </div>
+        </center>
+        <div style="margin-left:7.5%">
             <h3 id="yearTitle">2006-2021</h3>
-            <p id="drop_event">
-                More information about recessional events can be found at 
-                <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns">
-                    Investopedia.com.
-                </a>
+            <p id="year_info">
+                info about years
             </p>
         </div>
 
-        <!-- select button -->
-        <select id="selectButton"></select>
+        <div id="button_div" style="margin-left:7.5%">
+            <!-- select button -->
+            <select id="selectButton"></select>
 
-        <button onClick="overview_chart()">
-            overview
-        </button>
-        <button onClick="chart2008()">
-            2008
-        </button>
-        <button onClick="chart2015()">
-            2015
-        </button>
-        <button onClick="chart2018()">
-            2018
-        </button>
-        <button onClick="chart2020()">
-            2020
-        </button>
+            <button onClick="overview_chart()">
+                overview
+            </button>
+            <button onClick="chart2008()" style="outline:none">
+                2008
+            </button>
+            <button onClick="chart2015()">
+                2015
+            </button>
+            <button onClick="chart2018()">
+                2018
+            </button>
+            <button onClick="chart2020()">
+                2020
+            </button>
+        </div>
 
-        <div class="container"></div>
+        <center>
+            <div class="container" style="width:85%"></div>
+        </center>
         <div id="tooltip"></div>
         <div id="annotation"></div>
     </body>
