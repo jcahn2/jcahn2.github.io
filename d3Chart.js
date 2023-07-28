@@ -106,6 +106,7 @@ function chart(container, data){
         .attr("y2", d => y(d.High));
 
     g.append("line")
+        .data(ticker)
         .attr("y1", d => y(d.Open))
         .attr("y2", d => y(d.Close))
         .attr("stroke-width", 5)
@@ -113,7 +114,7 @@ function chart(container, data){
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8])
         .on("mouseover", mouseover)
-        .on("mousemove", mousemove(ticker))
+        .on("mousemove", mousemove)
         .on("mouseleave", mouseleave);
     
 

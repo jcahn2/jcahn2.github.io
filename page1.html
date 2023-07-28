@@ -26,12 +26,24 @@
             ticker1 = data.filter(function(d){
                 return (
                     d.Date >= d3.timeParse("%Y-%m-%d")("2020-01-01") &&
-                    d.Date <= d3.timeParse("%Y-%m-%d")("2020-12-31")
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2020-06-25")
                 )
             });
             // ticker1 = data.slice(-200);
 
-            ticker2 = data.slice(101,200);
+            ticker2 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2018-01-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2018-05-20")
+                )
+            });
+
+            ticker3 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2015-06-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2016-03-01")
+                )
+            });
 
             chart('.container',ticker1);
         }
