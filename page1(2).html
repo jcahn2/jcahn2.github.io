@@ -1,0 +1,599 @@
+<style>
+body {
+    font-family: 'europa','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-style: normal;
+    line-height: 1.42857143;
+}
+</style>
+<style>
+    .grouptitle {
+	  text-align: center;
+  margin-bottom: 0;
+  margin-bottom: 0;
+  width: 100%;
+	}
+    @media (min-width: 992px) {
+    .grouptitle {
+       font-size: 15px !important;
+	text-align: center;
+		
+    }
+    }
+    @media (min-width: 768px) {
+    .grouptitle {
+       font-size: 13px !important;
+	text-align: center;
+    }
+    }
+    @media (max-width: 767px) {
+    .grouptitle {
+       font-size: 9px !important;
+	text-align: center;
+    }
+    }
+    </style>
+<style>
+/* Tutorial on https://fossheim.io/writing/posts/css-text-gradient. */
+
+.gradient-text {
+  /* Fallback: Set a background color. */
+  background-color: #6c36d8;
+	text-align: center;
+	
+  
+  /* Create the gradient. */
+  background-image: linear-gradient(
+    77deg,
+    #202020 50%,   
+    #89c3d3 50%
+  );  
+  /* Set the background size and repeat properties. */
+  background-size: 270%;
+  background-repeat: repeat;
+  background-position: top right;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+
+  
+  animation: button-animation 0.65s 0.15s ease-out forwards;
+}
+
+.text-effect-box:hover,
+.text-effect-box:hover span{
+    animation: button-animation-rev 0.65s ease-out forwards;
+}
+
+.text-effect-box:hover {
+  box-shadow: 3px 2px 10px 1px rgba(0,0,0,0.15);
+  transition: 0.5s;
+}
+
+
+@keyframes button-animation {
+  0% {
+    background-position: top right;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+
+@keyframes button-animation-rev {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+/* Style the rest of the page. */
+
+
+</style>
+<style>
+.text-effect-box{
+	display: flex;
+	margin: 0.1em;
+	margin-bottom: 0%;
+	width: 16.5%;
+  background-image: linear-gradient(45deg, #89c3d3 50%, #202020 50%);
+  background-size: 270%;
+  background-repeat: repeat;
+  background-position: top right;
+  animation: button-animation 0.65s 0.15s ease-out forwards;
+  display: inline-table;
+  justify-content: space-between;	
+  border-radius: 0em;
+  text-decoration: none;
+  box-shadow: 7px 4px 20px 1px rgba(0,0,0,0.15);
+  padding: 1% 0.1%;
+  cursor: pointer;
+	}
+</style>
+<style>
+.group-title-box{
+	display: flex;
+	margin: 0.1em;
+	width: 16.5%;
+  background-image: linear-gradient(45deg, #89c3d3 50%, #202020 50%);
+  background-size: 270%;
+  background-repeat: repeat;
+  background-position: top right;
+  animation: button-animation 0.65s 0.15s ease-out forwards;
+  display: inline-table;
+  justify-content: space-between;	
+  border-radius: 0em;
+  text-decoration: none;
+  box-shadow: 7px 4px 20px 1px rgba(0,0,0,0.15);
+  padding: 1% 0.1%;
+  cursor: pointer;
+	}
+
+    @media (min-width: 992px) {
+    .group-title-box {
+	width: 16.55%;  !important;	  	
+  	padding: 1% 0.1%; !important;
+	margin: 0.1em; !important;
+	margin-bottom: 0.3em; !important;
+    }
+    }
+    @media (min-width: 768px) {
+    .group-title-box {
+	width: 16.1%;  !important;	  			
+  	padding: 1% 0.5%; !important;
+	margin: 0; !important;
+	margin-bottom: 0.3em; !important;
+    }
+    }
+    @media (max-width: 767px) {
+    .group-title-box { 
+	width: 100%;  !important;	  	
+  	padding: 0.1%; !important;
+	margin: 0;	!important;
+	margin-bottom: 0.3em; !important;		
+    }
+    }
+
+</style>
+<style>
+	.bottomshopnowtxt2 {color: #000; text-align: center;}
+	.bottomshopnowtxt3 {color: #000; text-align: center;}
+	.bottomshopnowtxt4 {color: #000; text-align: center;}
+	.bottomshopnowtxt5 {color: #000; text-align: center;}
+	.bottomshopnowbtn2 {background-color: #000; padding: 50px 5px; align-content: center; text-align: center; transition: 0.3s; opacity: 1}
+	@media (min-width: 992px) {
+	.bottomshopnowbox2 {
+	   width: 100%; !important;
+	}
+	.bottomshopnowbox3 {
+	   width: 70%; !important;
+	}		
+    .bottomshopnowtxt2 {
+        font-size: 45px    
+        }
+    .bottomshopnowtxt3 {
+        font-size: 26px    
+        } 
+    .bottomshopnowtxt4 {
+        font-size: 15px    
+        } 
+    .bottomshopnowtxt5 {
+        font-size: 18px    
+        }         
+	}
+
+	@media (min-width: 768px) {
+	.bottomshopnowbox2 {
+	   justify-content: flex-start !important;
+		width: 100%;
+	}
+	.bottomshopnowbox3 {
+	   justify-content: center!important;
+		width: 85%;
+	}		
+    .bottomshopnowtxt2 {
+        font-size: 40px    
+        }
+    .bottomshopnowtxt3 {
+        font-size: 18px    
+        } 
+    .bottomshopnowtxt4 {
+        font-size: 13px    
+        }     
+    .bottomshopnowtxt5 {
+        font-size: 18px    
+        }        
+	}
+
+	@media (max-width: 767px) {
+	.bottomshopnowbox2 {
+	   width: 100%; !important;
+	}
+	.bottomshopnowbox3 {
+	   width: 90%; !important;
+	}		
+    .bottomshopnowtxt2 {
+        font-size: 25px    
+        }
+    .bottomshopnowtxt3 {
+        font-size: 10px    
+        } 
+    .bottomshopnowtxt4 {
+        font-size: 9px    
+        }  
+    .bottomshopnowtxt5 {
+        font-size: 12px    
+        }        
+	}
+    
+</style>
+<style>
+button, input[type="submit"], input[type="reset"] {
+	background: inherit;
+	color: inherit;
+	border: inherit;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+</style>
+<style>
+@media (min-width: 992px) {
+.categorytxt {
+   font-size: 40px !important;
+}
+}
+@media (min-width: 768px) {
+.categorytxt {
+   font-size: 30px !important;
+}
+}
+@media (max-width: 767px) {
+.categorytxt {
+   font-size: 9px !important;
+}
+}
+</style>
+<style>
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+   justify-content: center!important;
+  float: left;
+  width: 20%;
+  padding: 2%;
+}
+
+/* Clear floats after image containers */
+.row::after {
+   justify-content: center!important;
+  content: "";
+  clear: both;
+  display: table;
+}
+</style> 
+
+
+<!DOCTYPE html>
+<html>
+    <!-- Load d3.js -->
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+    <!-- Load d3-annotation -->
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+    <!-- Color Scale -->
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <!-- load scripts -->
+    <script src="d3Chart.js"></script>
+    <script src="d3Chart_all.js"></script>
+    
+
+    <!-- load csv -->
+    <script>
+        async function init() {
+            const data = await d3.csv("https://jcahn2.github.io/Mastercard_stock_history.csv",
+                function(d) {return {
+                                Date: d3.timeParse("%Y-%m-%d")(d.Date),
+                                Open: +d.Open,
+                                High: +d.High,
+                                Low: +d.Low,
+                                Close: +d.Close,
+                                Volume: +d.Volume
+                                    }
+                            }
+            );
+            ticker_start = data.slice(-130);
+            
+            ticker2008 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2008-09-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2008-12-01")
+                )
+            });
+
+            ticker2015 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2015-06-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2016-03-01")
+                )
+            });
+
+            ticker2018 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2018-01-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2018-05-20")
+                )
+            });
+
+            ticker2020 = data.filter(function(d){
+                return (
+                    d.Date >= d3.timeParse("%Y-%m-%d")("2020-01-01") &&
+                    d.Date <= d3.timeParse("%Y-%m-%d")("2020-06-25")
+                )
+            });
+            
+            // all data
+            // getDay returns day of week, 1 = Monday
+            ticker_all = data.filter(function(d){
+                return (
+                    d.Date.getDay() == 1 &&
+                    d.Date.getMonth() in [0,6]
+                )
+            });
+
+
+            chart_all('.container',ticker_all);
+        }
+    </script>
+
+    <!-- button functions -->
+    <script>       
+        // overview chart
+        function overview_chart() {
+            d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
+            chart_all('.container',ticker_all);
+            
+
+            // change year title and description
+            document.getElementById("yearTitle")
+                .innerHTML = "2006-2021";
+            document.getElementById("drop_event")
+                .innerHTML = `
+                    Overview
+                `;
+
+        }
+
+        function chart2008() {
+            d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
+            chart('.container',ticker2008);
+
+            // change year title and description
+            document.getElementById("yearTitle")
+                .innerHTML = "2008";
+
+        }
+        
+        function chart2015() {
+            d3.selectAll('svg').remove();
+            chart('.container',ticker2015);
+
+            // change year title and description
+            document.getElementById("yearTitle")
+                .innerHTML = "2015";
+
+        }
+
+        function chart2018() {
+            d3.selectAll('svg').remove();
+            chart('.container',ticker2018);
+
+            // change year title and description
+            document.getElementById("yearTitle")
+                .innerHTML = "2018";
+            
+        }
+
+        function chart2020() {
+            d3.selectAll('svg').remove();
+            chart('.container',ticker2020);
+
+            // change year title and description
+            document.getElementById("yearTitle")
+                .innerHTML = "2020";
+
+        }
+    </script>
+
+    <head>
+        <style>
+            .button {
+                background-color: white;
+                color: black;
+                border: 2px solid #555555;
+                display: inline-block;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+            .button:hover {
+                background-color: #555555;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body onload="init()">
+	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+		
+        <center>
+            <div>
+                <h1 style="font-size: 55px">MasterCard Stock History </h1>
+                <p>
+					<strong>2006-2021</strong><br>
+				</p>
+				<div  >
+				<span >
+                    Over recent years, there have been several crashes in the stock market.<br>
+                    These candlestick charts show the correlation of significant events through
+                    MasterCard stocks. 
+                </span><br>
+                <span id="drop_event">
+                    More information about recessional events can be found at 
+                    <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns" target="_blank" style="color: black; ">
+                       <strong> Investopedia.com.</strong>
+                    </a>
+                </span>
+				</div>	
+            </div>
+        </center>
+		
+		
+	<div style="font-size: 0; margin-bottom: 7%;">blank</div>
+		
+		<center>
+        <div style="width: 65%; text-align: left;">
+
+
+			
+<a href="#BLACKPINK" >							
+<div class="group-title-box text-effect-box" style="text-align: center; padding: 0.5% 4.5%;">
+  <span class="gradient-text grouptitle"  > 
+	  <button onClick="overview_chart()" class=" categorytxt" style="border: none; letter-spacing: 1px" >
+	  <strong>Overview:</strong> 
+	  </button>
+	</span>
+</div>
+</a>
+			
+			
+			
+		
+			
+			
+			
+	<div style="font-size: 0; margin-bottom: 0.5%;">blank</div>
+			
+			
+            <button onClick="chart2008()" class="button categorytxt" style="border-color: transparent" >
+                <strong>2008</strong>
+            </button>
+			
+            <p >During 2008, a recession with multiple shocks to the economy saw the stock market
+                fall about 700 points within a single day. At this point, this had been the 
+                biggest drop in history. The effect can be seen consistent decline of the 
+                MasterCard stocks during the last months of 2008.</p>
+
+	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+
+			
+			
+            <button onClick="chart2015()" class="button categorytxt" >
+                <strong>2015</strong>
+            </button>
+            <p >Over the years of 2015 to 2016, there was a series of global stock market sellofs
+                that began around the month of June in 2015. For the US, the DJIA fell about 3.1%
+                during trading hours on August 21, 2015. The effect can be seen by the drop in 
+                MasterCard around the same month.</p>
+
+			
+	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+
+			
+			
+            <button onClick="chart2018()" class="button categorytxt">
+                <strong>2018</strong>
+            </button>
+            <p >During the year 2018, there was a cryptocurrency crash that saw the value of many
+                cryptocurrencies lose significant value, some such as Bitcoin for example dropping
+                as much as 15%. However, during the months of the crash in January and February 
+                of 2018, the MasterCard stock seemed to be steadily rising, unaffected by what is
+                now known as the Bitcoin Crash or Great Grypto Crash. </p>
+
+			
+	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+
+			
+            <button onClick="chart2020()" class="button categorytxt">
+                <strong>2020</strong>
+            </button>
+            <p >The beginning of 2020 saw the Coronavirus Pandemic sweep the nations of the world, 
+                    naturally affecting the economies and therefore the stock markets. Beginning in 
+                    February, the stock prices dropped suddenly and dramatically, evident by the decline
+                    of even the MasterCard stocks.</p>
+            <br><br>
+			
+			
+	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+			
+			
+			<button onClick="overview_chart()" class="button">
+                overview
+            </button>
+            <span>: asldkfjasdjlf</span>
+            <br>
+            <br>
+
+			
+
+			
+			
+            <button onClick="chart2008()" class="button">
+                2008
+            </button>
+            <p >During 2008, a recession with multiple shocks to the economy saw the stock market
+                fall about 700 points within a single day. At this point, this had been the 
+                biggest drop in history. The effect can be seen consistent decline of the 
+                MasterCard stocks during the last months of 2008.</p>
+
+            <button onClick="chart2015()" class="button">
+                2015
+            </button>
+            <p >: Over the years of 2015 to 2016, there was a series of global stock market sellofs
+                that began around the month of June in 2015. For the US, the DJIA fell about 3.1%
+                during trading hours on August 21, 2015. The effect can be seen by the drop in 
+                MasterCard around the same month.</p>
+
+            <button onClick="chart2018()" class="button">
+                2018
+            </button>
+            <p >: During the year 2018, there was a cryptocurrency crash that saw the value of many
+                cryptocurrencies lose significant value, some such as Bitcoin for example dropping
+                as much as 15%. However, during the months of the crash in January and February 
+                of 2018, the MasterCard stock seemed to be steadily rising, unaffected by what is
+                now known as the Bitcoin Crash or Great Grypto Crash. </p>
+
+            <button onClick="chart2020()" class="button">
+                2020
+            </button>
+            <p >: The beginning of 2020 saw the Coronavirus Pandemic sweep the nations of the world, 
+                    naturally affecting the economies and therefore the stock markets. Beginning in 
+                    February, the stock prices dropped suddenly and dramatically, evident by the decline
+                    of even the MasterCard stocks.</p>
+            <br><br>
+        </div>
+		</center>
+        <div id="button_div" style="margin-left:7.5%">
+            <!-- select button -->
+            <select id="selectButton"></select>
+            
+        </div>
+
+        <center>
+            <div class="container" style="width:85%"></div>
+        </center>
+        <div id="tooltip"></div>
+        <div id="annotation"></div>
+    </body>
+
+</html>
+

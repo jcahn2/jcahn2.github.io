@@ -9,6 +9,15 @@ function chart(container, data){
     const marginBottom = 60;
     const marginLeft = 40;
 
+    // update select button
+    d3.select("#selectButton")
+        .selectAll("myOptions")
+        .data([""])
+        .enter()
+        .append("option")
+        .text(function(d) {return d;})
+        .attr("value", function(d) {return d;});
+
     // Declare the positional encodings.
     // const x = d3.scaleBand()
     //         .domain(d3.utcDay
@@ -73,9 +82,11 @@ function chart(container, data){
                         .style("opacity", 0)
                         .style("position", "absolute")
                         .style("border", "solid")
-                        .style("border-width", "2px")
-                        .style("border-radius", "3px")
-                        .style("padding", "5px");
+                        .style("border-width", "5px")
+                        .style("border-radius", "5px")
+                        .style("padding", "5px")
+                        .style("background", "white")
+                        .style("color", "black");
 
     // append lines to chart
     g.append("line")
@@ -91,7 +102,7 @@ function chart(container, data){
             : d.Close > d.Open ? d3.schemeSet1[2]
             : d3.schemeSet1[8])
         .on("mouseover", function(d){
-            Tooltip.style("opacity",1)
+            Tooltip.style("opacity",0.9)
         })
         .on("mousemove", function(d){
             Tooltip.html(`${formatDate(d.Date)}
@@ -102,6 +113,9 @@ function chart(container, data){
             
             Tooltip
             .style("position", "absolute")
+            .style("border-color", d.Open > d.Close ? d3.schemeSet1[0]
+            : d.Close > d.Open ? d3.schemeSet1[2]
+            : d3.schemeSet1[8])
             .style("left", (d3.event.pageX + 50) + "px")
             .style("top", (d3.event.pageY) + "px")
         })
@@ -114,16 +128,13 @@ function chart(container, data){
         {
             // 2008 recession event
             note: {
-                label: "9/29 - stock market fell 777.68 points in a day",
+                label: "9/29: stock market fell 777.68 points in a day",
                 title: "2008 Recession"
+                
             },
-            type: d3.annotationCalloutCircle,
-            subject: {
-                radius: 20,         // circle radius
-                radiusPadding: 20   // white space around circle befor connector
-            },
-            color: ["green"],
-            data: {Date: "09/29/2008", Close: 15.75},
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "09/29/2008", Value: 16.99},
             dy: -70,
             dx: 70
         },
@@ -131,17 +142,12 @@ function chart(container, data){
             // 2015 stock market selloff
         {
             note: {
-                label: `Approximately when the worldwide stock market selloffs
-                        began affecting US stocks`,
-                title: "2015 Stock Market Selloff"
+                label: `Worldwide stock market selloffs affect US stocks`,
+                title: "2015 Stock Market Selloff",
             },
-            type: d3.annotationCalloutCircle,
-            subject: {
-                radius: 20,         // circle radius
-                radiusPadding: 20   // white space around circle befor connector
-            },
-            color: ["green"],
-            data: {Date: "08/24/2015", Close: 84.52},
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "08/24/2015", Value: 84.52},
             dy: 70,
             dx: 70
         },
@@ -149,39 +155,27 @@ function chart(container, data){
             // 2018 cryptocurrency crash
         {
             note: {
-                label: `While Bitcoin and other cryptocurrencies were crashing, 
-                        MasterCard seemed to rise steadily, unaffected`,
+                label: `Cryptocurrencies crash, MasterCard seems unaffected`,
                 title: "2018 Cryptocurrency Crash"
             },
-            type: d3.annotationCalloutCircle,
-            subject: {
-                radius: 20,         // circle radius
-                radiusPadding: 20   // white space around circle befor connector
-            },
-            color: ["green"],
-            data: {Date: "01/22/2018", Close: 165.00},
-            dy: -100,
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "01/22/2018", Value: 165.00},
+            dy: -120,
             dx: 40
         },
 
         // 2020 Coronavirus
         {
             note: {
-                label: `Due to the Coronavirus Pandemic, the world suffered heavy losses, 
-                        not only in health, but also in economy and consequently stocks 
-                        as well.
-                        `,
+                label: `Most recent stock market crash due to the coronavirus pandemic.`,
                 title: "2020 Coronavirus"
             },
-            type: d3.annotationCalloutCircle,
-            subject: {
-                radius: 20,         // circle radius
-                radiusPadding: 20   // white space around circle befor connector
-            },
-            color: ["green"],
-            data: {Date: "02/20/2020", Close: 341.39},
-            dy: 20,
-            dx: 70
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "02/20/2020", Value: 341.39},
+            dy: 0,
+            dx: 140
         },
 
             
@@ -190,9 +184,10 @@ function chart(container, data){
     // Add annotation to the chart
     const makeAnnotations = d3.annotation()
         .type(d3.annotationLabel)
+        .notePadding(15)
         .accessors({
             x: d => x(d3.timeParse("%m/%d/%Y")(d.Date)),
-            y: d => y(d.Close)
+            y: d => y(d.Value)
         })
         .accessorsInverse({
             date: d => d3.timeFormat("%m/%d/%Y")(x.invert(d.x)),

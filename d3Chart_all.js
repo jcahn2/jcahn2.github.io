@@ -88,31 +88,28 @@ function chart_all(container, data){
             .y(d => y(d.Open))
         )
             .attr("stroke", function(d) { return myColor("Open");})
-            .style("stroke-width",2)
+            .style("stroke-width",3)
             .style("fill", "none")
-        .data(ticker)
-        .on("mouseover", function(d){
-            Tooltip.style("opacity",1)
-        })
-        .on("mousemove", function(d){
-            Tooltip.html(`${formatDate(d.Date)}
-            Open: ${formatValue(d.Open)}`
-            );
+        // .on("mouseover", function(d){
+        //     Tooltip.style("opacity",1)
+        // })
+        // .on("mousemove", function(d){
+        //     Tooltip.html(`${formatDate(d.Date)}
+        //     Open: ${formatValue(d.Open)}`
+        //     );
             
-            Tooltip
-            .style("position", "absolute")
-            .style("left", (d3.event.pageX + 50) + "px")
-            .style("top", (d3.event.pageY) + "px")
-        })
-        .on("mouseleave", function(d){
-            Tooltip.style("opacity",0)
-        });
+        //     Tooltip
+        //     .style("position", "absolute")
+        //     .style("left", (d3.event.pageX + 50) + "px")
+        //     .style("top", (d3.event.pageY) + "px")
+        // })
+        // .on("mouseleave", function(d){
+        //     Tooltip.style("opacity",0)
+        // });
 
     // function to update chart
     function update(selectedGroup) {
         // Create new data with the selection?
-        var dataFilter = ticker.map(function(d){return {Date: d.Date, Value:d[selectedGroup]} })
-
         // Give these new data to update line
         g
             .datum(ticker)
@@ -122,7 +119,25 @@ function chart_all(container, data){
                 .x(function(d) { return x(d3.utcDay(d.Date)) })
                 .y(function(d) { return y(d[selectedGroup]) })
             )
-            .attr("stroke", function(d){ return myColor(selectedGroup) });
+            .attr("stroke", function(d){ return myColor(selectedGroup) })
+        // g
+        //     .data(ticker)
+        //     .on("mouseover", function(d){
+        //         Tooltip.style("opacity",1)
+        //     })
+        //     .on("mousemove", function(d){
+        //         Tooltip.html(`${formatDate(d.Date)}
+        //         ${selectedGroup}: ${formatValue(d[selectedGroup])}`
+        //         );
+                
+        //         Tooltip
+        //         .style("position", "absolute")
+        //         .style("left", (d3.event.pageX + 50) + "px")
+        //         .style("top", (d3.event.pageY) + "px")
+        //     })
+        //     .on("mouseleave", function(d){
+        //         Tooltip.style("opacity",0)
+        //     });
         }
 
 

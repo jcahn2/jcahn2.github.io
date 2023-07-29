@@ -83,82 +83,75 @@
             // change year title and description
             document.getElementById("yearTitle")
                 .innerHTML = "2006-2021";
-            document.getElementById("drop_event")
-                .innerHTML = `
-                    Overview
-                `;
 
         }
 
         function chart2008() {
-            d3.selectAll('svg').remove();
+            d3.selectAll('svg')
+                .remove();
             document.getElementById("selectButton")
                 .innerHTML = "";
             chart('.container',ticker2008);
 
             // change year title and description
             document.getElementById("yearTitle")
-                .innerHTML = "2008";
-            document.getElementById("drop_event")
-                .innerHTML = `
-                    During 2008, a recession with multiple shocks to the economy saw the stock market
-                    fall about 700 points within a single day. At this point, this had been the 
-                    biggest drop in history. The effect can be seen consistent decline of the 
-                    MasterCard stocks during the last months of 2008.
-                `;
+                .innerHTML = "2008 Recession";
 
         }
         
         function chart2015() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
             chart('.container',ticker2015);
 
             // change year title and description
             document.getElementById("yearTitle")
-                .innerHTML = "2015";
-            document.getElementById("drop_event")
-                .innerHTML = `
-                    Over the years of 2015 to 2016, there was a series of global stock market sellofs
-                    that began around the month of June in 2015. For the US, the DJIA fell about 3.1%
-                    during trading hours on August 21, 2015. The effect can be seen by the drop in 
-                    MasterCard around the same month.
-                `;
+                .innerHTML = "2015 Stock Market Selloff";
 
         }
 
         function chart2018() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
             chart('.container',ticker2018);
 
             // change year title and description
             document.getElementById("yearTitle")
-                .innerHTML = "2018";
-            document.getElementById("drop_event")
-                .innerHTML = `
-                    During the year 2018, there was a cryptocurrency crash that saw the value of many
-                    cryptocurrencies lose significant value, some such as Bitcoin for example dropping
-                    as much as 15%. However, during the months of the crash in January and February 
-                    of 2018, the MasterCard stock seemed to be steadily rising, unaffected by what is
-                    now known as the Bitcoin Crash or Great Grypto Crash.
-                `;
+                .innerHTML = "2018 Cryptocurrency Crash";
+            
         }
 
         function chart2020() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
             chart('.container',ticker2020);
 
             // change year title and description
             document.getElementById("yearTitle")
-                .innerHTML = "2020";
-            document.getElementById("drop_event")
-                .innerHTML = `
-                    The beginning of 2020 saw the Coronavirus Pandemic sweep the nations of the world, 
-                    naturally affecting the economies and therefore the stock markets. Beginning in 
-                    February, the stock prices dropped suddenly and dramatically, evident by the decline
-                    of even the MasterCard stocks.
-                `;
+                .innerHTML = "2020 Coronavirus Pandemic";
+
         }
     </script>
+
+    <head>
+        <style>
+            .button {
+                background-color: white;
+                color: black;
+                border: 2px solid #555555;
+                display: inline-block;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+            .button:hover {
+                background-color: #555555;
+                color: white;
+            }
+        </style>
+    </head>
 
     <body onload="init()">
         <center>
@@ -169,7 +162,7 @@
                     These candlestick charts show the correlation of significant events through
                     MasterCard stocks. 
                 </p>
-                <p id="drop_event">
+                <p id="ref">
                     More information about recessional events can be found at 
                     <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns">
                         Investopedia.com.
@@ -179,30 +172,52 @@
         </center>
         <div style="margin-left:7.5%">
             <h3 id="yearTitle">2006-2021</h3>
-            <p id="year_info">
-                info about years
-            </p>
+            <button onClick="overview_chart()" class="button">
+                Overview
+            </button>
+            <span>: History of the MasterCard stock prices separated by Open, Close, Low, and High categories.</span>
+            <br>
+            <br>
+
+            <button onClick="chart2008()" class="button">
+                2008
+            </button>
+            <p style="width:85%">During 2008, a recession with multiple shocks to the economy saw the stock market
+                fall about 700 points within a single day. At this point, this had been the 
+                biggest drop in history. The effect can be seen consistent decline of the 
+                MasterCard stocks during the last months of 2008.</p>
+
+            <button onClick="chart2015()" class="button">
+                2015
+            </button>
+            <p style="width:85%">Over the years of 2015 to 2016, there was a series of global stock market sellofs
+                that began around the month of June in 2015. For the US, the DJIA fell about 3.1%
+                during trading hours on August 21, 2015. The effect can be seen by the drop in 
+                MasterCard around the same month.</p>
+
+            <button onClick="chart2018()" class="button">
+                2018
+            </button>
+            <p style="width:85%">During the year 2018, there was a cryptocurrency crash that saw the value of many
+                cryptocurrencies lose significant value, some such as Bitcoin for example dropping
+                as much as 15%. However, during the months of the crash in January and February 
+                of 2018, the MasterCard stock seemed to be steadily rising, unaffected by what is
+                now known as the Bitcoin Crash or Great Grypto Crash. </p>
+
+            <button onClick="chart2020()" class="button">
+                2020
+            </button>
+            <p style="width:85%">The beginning of 2020 saw the Coronavirus Pandemic sweep the nations of the world, 
+                    naturally affecting the economies and therefore the stock markets. Beginning in 
+                    February, the stock prices dropped suddenly and dramatically, evident by the decline
+                    of even the MasterCard stocks.</p>
+            <br><br>
         </div>
 
         <div id="button_div" style="margin-left:7.5%">
             <!-- select button -->
             <select id="selectButton"></select>
-
-            <button onClick="overview_chart()">
-                overview
-            </button>
-            <button onClick="chart2008()" style="outline:none">
-                2008
-            </button>
-            <button onClick="chart2015()">
-                2015
-            </button>
-            <button onClick="chart2018()">
-                2018
-            </button>
-            <button onClick="chart2020()">
-                2020
-            </button>
+            
         </div>
 
         <center>
