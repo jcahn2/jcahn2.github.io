@@ -414,6 +414,28 @@ button, input[type="submit"], input[type="reset"] {
                 color: white;
             }
         </style>
+        <style>
+            .btn-group button {
+                background-color: white;
+                color: black;
+                border: 2px solid #555555;
+                display: inline-block;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                padding: 2px 5px;
+            }
+            /* Clear floats (clearfix hack) */
+            .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+            }
+            .btn-group button:hover {
+                background-color: #555555;
+                color: white;
+            }
+
+        </style>
     </head>
 
     <body onload="init()">
@@ -428,7 +450,7 @@ button, input[type="submit"], input[type="reset"] {
 				<div style="width: 65%; text-align: center;">
 				<span id="main description">
                     Over recent years, there have been several crashes in the stock market.
-                    These candlestick charts show the correlation of significant events through
+                    The candlestick charts below show the correlation of significant events through
                     MasterCard stocks, where significant drops in the world economy are highlighted.
                 </span><br>
                 <span id="extra-info">
@@ -451,10 +473,10 @@ button, input[type="submit"], input[type="reset"] {
                 
             <a href="#BLACKPINK" >							
             <div class="group-title-box text-effect-box" style="text-align: center; padding: 0.5% 4.5%;">
-            <span class="gradient-text grouptitle"  > 
-                <button onClick="overview_chart()" class=" categorytxt" style="border: none; letter-spacing: 1px" >
-                <strong>Overview:</strong> 
-                </button>
+                <span class="gradient-text grouptitle"  > 
+                    <button onClick="overview_chart()" class=" categorytxt" style="border: none; letter-spacing: 1px" >
+                    <strong>Overview</strong> 
+                    </button>
                 </span>
             </div>
             </a>
@@ -515,11 +537,22 @@ button, input[type="submit"], input[type="reset"] {
             <div style="font-size: 0; margin-bottom: 5%;">blank</div>
         </div>
         </center>
-        <div id="button_div" style="margin-left:7.5%">
-            <!-- select button -->
-            <select id="selectButton"></select>
+        <div style="display: inline;">
+            <div class="btn-group" style="text-align: right; margin-right:8%" >
+                <button onClick="overview_chart()">Overview</button>
+                <button onClick="chart2008()">2008</button>
+                <button onClick="chart2015()">2015</button>
+                <button onClick="chart2018()">2018</button>
+                <button onClick="chart2020()">2020</button>
+            </div>
+            <div style="margin-left:7.5%">
+                <!-- select button -->
+                <select id="selectButton"></select>
+            </div>
+            
             
         </div>
+        
 
         <center>
             <div class="container" style="width:85%"></div>
