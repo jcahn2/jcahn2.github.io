@@ -1,0 +1,280 @@
+<style>
+body {
+    font-family: 'europa','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-style: normal;
+    line-height: 1.42857143;
+}
+</style>
+<style>
+    .grouptitle {
+	  text-align: center;
+  margin-bottom: 0;
+  margin-bottom: 0;
+  width: 100%;
+	}
+    @media (min-width: 992px) {
+    .grouptitle {
+       font-size: 15px !important;
+	text-align: center;
+		
+    }
+    }
+    @media (min-width: 768px) {
+    .grouptitle {
+       font-size: 13px !important;
+	text-align: center;
+    }
+    }
+    @media (max-width: 767px) {
+    .grouptitle {
+       font-size: 9px !important;
+	text-align: center;
+    }
+    }
+    </style>
+<style>
+/* Tutorial on https://fossheim.io/writing/posts/css-text-gradient. */
+
+.gradient-text {
+  /* Fallback: Set a background color. */
+  background-color: #6c36d8;
+	text-align: center;
+	
+  
+  /* Create the gradient. */
+  background-image: linear-gradient(
+    77deg,
+    #202020 50%,   
+    #89c3d3 50%
+  );  
+  /* Set the background size and repeat properties. */
+  background-size: 270%;
+  background-repeat: repeat;
+  background-position: top right;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+
+  
+  animation: button-animation 0.65s 0.15s ease-out forwards;
+}
+
+.text-effect-box:hover,
+.text-effect-box:hover span{
+    animation: button-animation-rev 0.65s ease-out forwards;
+}
+
+.text-effect-box:hover {
+  box-shadow: 3px 2px 10px 1px rgba(0,0,0,0.15);
+  transition: 0.5s;
+}
+
+
+@keyframes button-animation {
+  0% {
+    background-position: top right;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+
+@keyframes button-animation-rev {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+/* Style the rest of the page. */
+
+
+</style>
+<style>
+.text-effect-box{
+	display: flex;
+	margin: 0.1em;
+	margin-bottom: 0%;
+	width: 16.5%;
+  background-image: linear-gradient(45deg, #89c3d3 50%, #202020 50%);
+  background-size: 270%;
+  background-repeat: repeat;
+  background-position: top right;
+  animation: button-animation 0.65s 0.15s ease-out forwards;
+  display: inline-table;
+  justify-content: space-between;	
+  border-radius: 0em;
+  text-decoration: none;
+  box-shadow: 7px 4px 20px 1px rgba(0,0,0,0.15);
+  padding: 1% 0.1%;
+  cursor: pointer;
+	}
+</style>
+<style>
+.group-title-box{
+	display: flex;
+	margin: 0.1em;
+	width: 16.5%;
+  background-image: linear-gradient(45deg, #89c3d3 50%, #202020 50%);
+  background-size: 270%;
+  background-repeat: repeat;
+  background-position: top right;
+  animation: button-animation 0.65s 0.15s ease-out forwards;
+  display: inline-table;
+  justify-content: space-between;	
+  border-radius: 0em;
+  text-decoration: none;
+  box-shadow: 7px 4px 20px 1px rgba(0,0,0,0.15);
+  padding: 1% 0.1%;
+  cursor: pointer;
+	}
+
+    @media (min-width: 992px) {
+    .group-title-box {
+	width: 16.55%;  !important;	  	
+  	padding: 1% 0.1%; !important;
+	margin: 0.1em; !important;
+	margin-bottom: 0.3em; !important;
+    }
+    }
+    @media (min-width: 768px) {
+    .group-title-box {
+	width: 16.1%;  !important;	  			
+  	padding: 1% 0.5%; !important;
+	margin: 0; !important;
+	margin-bottom: 0.3em; !important;
+    }
+    }
+    @media (max-width: 767px) {
+    .group-title-box { 
+	width: 100%;  !important;	  	
+  	padding: 0.1%; !important;
+	margin: 0;	!important;
+	margin-bottom: 0.3em; !important;
+    }
+    }
+
+</style>
+<style>
+	.bottomshopnowtxt2 {color: #000; text-align: center;}
+	.bottomshopnowtxt3 {color: #000; text-align: center;}
+	.bottomshopnowtxt4 {color: #000; text-align: center;}
+	.bottomshopnowtxt5 {color: #000; text-align: center;}
+	.bottomshopnowbtn2 {background-color: #000; padding: 50px 5px; align-content: center; text-align: center; transition: 0.3s; opacity: 1}
+	@media (min-width: 992px) {
+	.bottomshopnowbox2 {
+	   width: 100%; !important;
+	}
+	.bottomshopnowbox3 {
+	   width: 70%; !important;
+	}		
+    .bottomshopnowtxt2 {
+        font-size: 45px    
+        }
+    .bottomshopnowtxt3 {
+        font-size: 26px    
+        } 
+    .bottomshopnowtxt4 {
+        font-size: 15px    
+        } 
+    .bottomshopnowtxt5 {
+        font-size: 18px    
+        }         
+	}
+
+	@media (min-width: 768px) {
+	.bottomshopnowbox2 {
+	   justify-content: flex-start !important;
+		width: 100%;
+	}
+	.bottomshopnowbox3 {
+	   justify-content: center!important;
+		width: 85%;
+	}		
+    .bottomshopnowtxt2 {
+        font-size: 40px    
+        }
+    .bottomshopnowtxt3 {
+        font-size: 18px    
+        } 
+    .bottomshopnowtxt4 {
+        font-size: 13px    
+        }     
+    .bottomshopnowtxt5 {
+        font-size: 18px    
+        }        
+	}
+
+	@media (max-width: 767px) {
+	.bottomshopnowbox2 {
+	   width: 100%; !important;
+	}
+	.bottomshopnowbox3 {
+	   width: 90%; !important;
+	}		
+    .bottomshopnowtxt2 {
+        font-size: 25px    
+        }
+    .bottomshopnowtxt3 {
+        font-size: 10px    
+        } 
+    .bottomshopnowtxt4 {
+        font-size: 9px    
+        }  
+    .bottomshopnowtxt5 {
+        font-size: 12px    
+        }        
+	}
+    
+</style>
+<style>
+button, input[type="submit"], input[type="reset"] {
+	background: inherit;
+	color: inherit;
+	border: inherit;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+</style>
+<style>
+@media (min-width: 992px) {
+.categorytxt {
+   font-size: 40px !important;
+}
+}
+@media (min-width: 768px) {
+.categorytxt {
+   font-size: 30px !important;
+}
+}
+@media (max-width: 767px) {
+.categorytxt {
+   font-size: 9px !important;
+}
+}
+</style>
+<style>
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+   justify-content: center!important;
+  float: left;
+  width: 20%;
+  padding: 2%;
+}
+
+/* Clear floats after image containers */
+.row::after {
+   justify-content: center!important;
+  content: "";
+  clear: both;
+  display: table;
+}
+</style> 

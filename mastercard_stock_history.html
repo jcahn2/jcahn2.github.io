@@ -156,7 +156,7 @@ body {
 	width: 100%;  !important;	  	
   	padding: 0.1%; !important;
 	margin: 0;	!important;
-	margin-bottom: 0.3em; !important;		
+	margin-bottom: 0.3em; !important;
     }
     }
 
@@ -362,9 +362,6 @@ button, input[type="submit"], input[type="reset"] {
             chart_all('.container',ticker_all);
             
 
-            // change year title and description
-            document.getElementById("yearTitle")
-                .innerHTML = "2006-2021";
             document.getElementById("drop_event")
                 .innerHTML = `
                     Overview
@@ -378,9 +375,6 @@ button, input[type="submit"], input[type="reset"] {
                 .innerHTML = "";
             chart('.container',ticker2008);
 
-            // change year title and description
-            document.getElementById("yearTitle")
-                .innerHTML = "2008";
 
         }
         
@@ -388,29 +382,19 @@ button, input[type="submit"], input[type="reset"] {
             d3.selectAll('svg').remove();
             chart('.container',ticker2015);
 
-            // change year title and description
-            document.getElementById("yearTitle")
-                .innerHTML = "2015";
+
 
         }
 
         function chart2018() {
             d3.selectAll('svg').remove();
             chart('.container',ticker2018);
-
-            // change year title and description
-            document.getElementById("yearTitle")
-                .innerHTML = "2018";
             
         }
 
         function chart2020() {
             d3.selectAll('svg').remove();
             chart('.container',ticker2020);
-
-            // change year title and description
-            document.getElementById("yearTitle")
-                .innerHTML = "2020";
 
         }
     </script>
@@ -433,21 +417,21 @@ button, input[type="submit"], input[type="reset"] {
     </head>
 
     <body onload="init()">
-	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+	    <div style="font-size: 0; margin-bottom: 5%;">blank</div>
 		
         <center>
             <div>
                 <h1 style="font-size: 55px">MasterCard Stock History </h1>
                 <p>
-					<strong>2006-2021</strong><br>
+					<strong id="subtitle">2006-2021</strong><br>
 				</p>
-				<div  >
-				<span >
+				<div>
+				<span id="main description">
                     Over recent years, there have been several crashes in the stock market.<br>
                     These candlestick charts show the correlation of significant events through
                     MasterCard stocks. 
                 </span><br>
-                <span id="drop_event">
+                <span id="extra-info">
                     More information about recessional events can be found at 
                     <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns" target="_blank" style="color: black; ">
                        <strong> Investopedia.com.</strong>
@@ -458,130 +442,79 @@ button, input[type="submit"], input[type="reset"] {
         </center>
 		
 		
-	<div style="font-size: 0; margin-bottom: 7%;">blank</div>
-		
-		<center>
+        <div style="font-size: 0; margin-bottom: 7%;">blank</div>
+            
+        <center>
         <div style="width: 65%; text-align: left;">
 
 
-			
-<a href="#BLACKPINK" >							
-<div class="group-title-box text-effect-box" style="text-align: center; padding: 0.5% 4.5%;">
-  <span class="gradient-text grouptitle"  > 
-	  <button onClick="overview_chart()" class=" categorytxt" style="border: none; letter-spacing: 1px" >
-	  <strong>Overview:</strong> 
-	  </button>
-	</span>
-</div>
-</a>
-			
-			
-			
-		
-			
-			
-			
-	<div style="font-size: 0; margin-bottom: 0.5%;">blank</div>
-			
-			
-            <button onClick="chart2008()" class="button categorytxt" style="border-color: transparent" >
-                <strong>2008</strong>
-            </button>
-			
-            <p >During 2008, a recession with multiple shocks to the economy saw the stock market
-                fall about 700 points within a single day. At this point, this had been the 
-                biggest drop in history. The effect can be seen consistent decline of the 
-                MasterCard stocks during the last months of 2008.</p>
+                
+            <a href="#BLACKPINK" >							
+            <div class="group-title-box text-effect-box" style="text-align: center; padding: 0.5% 4.5%;">
+            <span class="gradient-text grouptitle"  > 
+                <button onClick="overview_chart()" class=" categorytxt" style="border: none; letter-spacing: 1px" >
+                <strong>Overview:</strong> 
+                </button>
+                </span>
+            </div>
+            </a>
 
-	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+                
+            <div style="font-size: 0; margin-bottom: 0.5%;">blank</div>
+                
+                
+                <button onClick="chart2008()" class="button categorytxt" style="border-color: transparent" >
+                    <strong>2008</strong>
+                </button>
+                
+                <p >During 2008, a recession with multiple shocks to the economy saw the stock market
+                    fall about 700 points within a single day. At this point, this had been the 
+                    biggest drop in history. The effect can be seen consistent decline of the 
+                    MasterCard stocks during the last months of 2008.</p>
 
-			
-			
-            <button onClick="chart2015()" class="button categorytxt" >
-                <strong>2015</strong>
-            </button>
-            <p >Over the years of 2015 to 2016, there was a series of global stock market sellofs
-                that began around the month of June in 2015. For the US, the DJIA fell about 3.1%
-                during trading hours on August 21, 2015. The effect can be seen by the drop in 
-                MasterCard around the same month.</p>
+            <div style="font-size: 0; margin-bottom: 5%;">blank</div>
 
-			
-	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+                
+                
+                <button onClick="chart2015()" class="button categorytxt" style="border-color: transparent">
+                    <strong>2015</strong>
+                </button>
+                <p >Over the years of 2015 to 2016, there was a series of global stock market sellofs
+                    that began around the month of June in 2015. For the US, the DJIA fell about 3.1%
+                    during trading hours on August 21, 2015. The effect can be seen by the drop in 
+                    MasterCard around the same month.</p>
 
-			
-			
-            <button onClick="chart2018()" class="button categorytxt">
-                <strong>2018</strong>
-            </button>
-            <p >During the year 2018, there was a cryptocurrency crash that saw the value of many
-                cryptocurrencies lose significant value, some such as Bitcoin for example dropping
-                as much as 15%. However, during the months of the crash in January and February 
-                of 2018, the MasterCard stock seemed to be steadily rising, unaffected by what is
-                now known as the Bitcoin Crash or Great Grypto Crash. </p>
+                
+            <div style="font-size: 0; margin-bottom: 5%;">blank</div>
 
-			
-	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
+                
+                
+                <button onClick="chart2018()" class="button categorytxt" style="border-color: transparent">
+                    <strong>2018</strong>
+                </button>
+                <p >During the year 2018, there was a cryptocurrency crash that saw the value of many
+                    cryptocurrencies lose significant value, some such as Bitcoin for example dropping
+                    as much as 15%. However, during the months of the crash in January and February 
+                    of 2018, the MasterCard stock seemed to be steadily rising, unaffected by what is
+                    now known as the Bitcoin Crash or Great Grypto Crash. </p>
 
-			
-            <button onClick="chart2020()" class="button categorytxt">
-                <strong>2020</strong>
-            </button>
-            <p >The beginning of 2020 saw the Coronavirus Pandemic sweep the nations of the world, 
-                    naturally affecting the economies and therefore the stock markets. Beginning in 
-                    February, the stock prices dropped suddenly and dramatically, evident by the decline
-                    of even the MasterCard stocks.</p>
-            <br><br>
-			
-			
-	<div style="font-size: 0; margin-bottom: 5%;">blank</div>
-			
-			
-			<button onClick="overview_chart()" class="button">
-                overview
-            </button>
-            <span>: asldkfjasdjlf</span>
-            <br>
-            <br>
+                
+            <div style="font-size: 0; margin-bottom: 5%;">blank</div>
 
-			
-
-			
-			
-            <button onClick="chart2008()" class="button">
-                2008
-            </button>
-            <p >During 2008, a recession with multiple shocks to the economy saw the stock market
-                fall about 700 points within a single day. At this point, this had been the 
-                biggest drop in history. The effect can be seen consistent decline of the 
-                MasterCard stocks during the last months of 2008.</p>
-
-            <button onClick="chart2015()" class="button">
-                2015
-            </button>
-            <p >: Over the years of 2015 to 2016, there was a series of global stock market sellofs
-                that began around the month of June in 2015. For the US, the DJIA fell about 3.1%
-                during trading hours on August 21, 2015. The effect can be seen by the drop in 
-                MasterCard around the same month.</p>
-
-            <button onClick="chart2018()" class="button">
-                2018
-            </button>
-            <p >: During the year 2018, there was a cryptocurrency crash that saw the value of many
-                cryptocurrencies lose significant value, some such as Bitcoin for example dropping
-                as much as 15%. However, during the months of the crash in January and February 
-                of 2018, the MasterCard stock seemed to be steadily rising, unaffected by what is
-                now known as the Bitcoin Crash or Great Grypto Crash. </p>
-
-            <button onClick="chart2020()" class="button">
-                2020
-            </button>
-            <p >: The beginning of 2020 saw the Coronavirus Pandemic sweep the nations of the world, 
-                    naturally affecting the economies and therefore the stock markets. Beginning in 
-                    February, the stock prices dropped suddenly and dramatically, evident by the decline
-                    of even the MasterCard stocks.</p>
-            <br><br>
+                
+                <button onClick="chart2020()" class="button categorytxt" style="border-color: transparent">
+                    <strong>2020</strong>
+                </button>
+                <p >The beginning of 2020 saw the Coronavirus Pandemic sweep the nations of the world, 
+                        naturally affecting the economies and therefore the stock markets. Beginning in 
+                        February, the stock prices dropped suddenly and dramatically, evident by the decline
+                        of even the MasterCard stocks.</p>
+                <br><br>
+                
+                
+            <div style="font-size: 0; margin-bottom: 5%;">blank</div>
         </div>
-		</center>
+        </center>
         <div id="button_div" style="margin-left:7.5%">
             <!-- select button -->
             <select id="selectButton"></select>
@@ -593,7 +526,32 @@ button, input[type="submit"], input[type="reset"] {
         </center>
         <div id="tooltip"></div>
         <div id="annotation"></div>
+
+    <div style="font-size: 0; margin-bottom: 15%;">blank</div>
     </body>
+
+    <footer>
+        <center>
+        <div>
+            <p>
+                <b>References</b>
+            </p>
+            <p>
+                Special thanks to <i><b>Jess JaYoung Kim</b></i> for help designing the website appearance.
+            </p>
+            <div>
+                <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns">Investopedia</a><br>
+                <a href="https://www.kaggle.com/datasets/kalilurrahman/mastercard-stock-data-latest-and-updated">Kaggle Mastercard Dataset</a><br>
+                <a href="https://observablehq.com/@d3/candlestick-chart/2?intent=fork">Candlestick Chart</a><br>
+                <a href="https://d3-graph-gallery.com/graph/custom_annotation.html">D3 Custom Annotations</a><br>
+                <a href="https://d3-annotation.susielu.com/">D3.Annotations</a><br>
+                <a href="https://d3-graph-gallery.com/graph/interactivity_tooltip.html">D3 Tooltips</a><br>
+                <a href="https://d3-graph-gallery.com/graph/line_basic.html">D3 Line Chart Basic</a><br>
+                <a href="https://d3-graph-gallery.com/graph/line_select.html">D3 Line Select</a><br>
+            </div>
+        </div>
+        </center>
+    </footer>
 
 </html>
 
