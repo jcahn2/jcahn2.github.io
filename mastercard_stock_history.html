@@ -359,6 +359,8 @@ button, input[type="submit"], input[type="reset"] {
             d3.selectAll('svg').remove();
             document.getElementById("selectButton")
                 .innerHTML = "";
+            document.getElementById("tooltip_help")
+                .innerHTML = "";
             chart_all('.container',ticker_all);
             
 
@@ -373,6 +375,8 @@ button, input[type="submit"], input[type="reset"] {
             d3.selectAll('svg').remove();
             document.getElementById("selectButton")
                 .innerHTML = "";
+            document.getElementById("tooltip_help")
+                .innerHTML = "Hover the colored boxes for additional information.";
             chart('.container',ticker2008);
 
 
@@ -380,6 +384,10 @@ button, input[type="submit"], input[type="reset"] {
         
         function chart2015() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
+            document.getElementById("tooltip_help")
+                .innerHTML = "Hover the colored boxes for additional information.";
             chart('.container',ticker2015);
 
 
@@ -388,12 +396,20 @@ button, input[type="submit"], input[type="reset"] {
 
         function chart2018() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
+            document.getElementById("tooltip_help")
+                .innerHTML = "Hover the colored boxes for additional information.";
             chart('.container',ticker2018);
             
         }
 
         function chart2020() {
             d3.selectAll('svg').remove();
+            document.getElementById("selectButton")
+                .innerHTML = "";
+            document.getElementById("tooltip_help")
+                .innerHTML = "Hover the colored boxes for additional information.";
             chart('.container',ticker2020);
 
         }
@@ -556,6 +572,7 @@ button, input[type="submit"], input[type="reset"] {
 
         <center>
             <div class="container" style="width:85%"></div>
+            <p id="tooltip_help"></p>
         </center>
         <div id="tooltip"></div>
         <div id="annotation"></div>
