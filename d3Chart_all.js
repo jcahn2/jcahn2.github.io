@@ -150,6 +150,81 @@ function chart_all(container, data){
     
     });
 
+
+    // annotations
+    const annotations = [
+        {
+            // 2008 recession event
+            note: {
+                label: "",
+                title: "2008 Recession"
+                
+            },
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "09/29/2008", Value: 16.99},
+            dy: -70,
+            dx: 70
+        },
+
+            // 2015 stock market selloff
+        {
+            note: {
+                label: ``,
+                title: "2015 Stock Market Selloff",
+            },
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "08/24/2015", Value: 84.52},
+            dy: -70,
+            dx: -70
+        },
+        
+            // 2018 cryptocurrency crash
+        {
+            note: {
+                label: ``,
+                title: "2018 Cryptocurrency Crash"
+            },
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "01/22/2018", Value: 165.00},
+            dy: -10,
+            dx: -60
+        },
+
+        // 2020 Coronavirus
+        {
+            note: {
+                label: ``,
+                title: "2020 Coronavirus"
+            },
+            type: d3.annotationLabel,
+            color: ["gray"],
+            data: {Date: "02/21/2020", Value: 332.62},
+            dy: 0,
+            dx: -100
+        },
+
+            
+    ]
+    
+    // Add annotation to the chart
+    const makeAnnotations = d3.annotation()
+        .type(d3.annotationLabel)
+        .accessors({
+            x: d => x(d3.timeParse("%m/%d/%Y")(d.Date)),
+            y: d => y(d.Value)
+        })
+        .accessorsInverse({
+            date: d => d3.timeFormat("%m/%d/%Y")(x.invert(d.x)),
+            close: d => y.invert(d.y)
+        })
+        .annotations(annotations)
+    d3.select("svg")
+        .append("g")
+        .call(makeAnnotations)
+
     
 
 

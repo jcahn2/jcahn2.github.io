@@ -342,8 +342,8 @@ button, input[type="submit"], input[type="reset"] {
             // getDay returns day of week, 1 = Monday
             ticker_all = data.filter(function(d){
                 return (
-                    d.Date.getDay() == 1 &&
-                    d.Date.getMonth() in [0,6]
+                    d.Date.getDay() == 1
+                    //d.Date.getMonth() in [0,2,4,6,8,10]
                 )
             });
 
@@ -425,11 +425,11 @@ button, input[type="submit"], input[type="reset"] {
                 <p>
 					<strong id="subtitle">2006-2021</strong><br>
 				</p>
-				<div>
+				<div style="width: 65%; text-align: center;">
 				<span id="main description">
-                    Over recent years, there have been several crashes in the stock market.<br>
+                    Over recent years, there have been several crashes in the stock market.
                     These candlestick charts show the correlation of significant events through
-                    MasterCard stocks. 
+                    MasterCard stocks, where significant drops in the world economy are highlighted.
                 </span><br>
                 <span id="extra-info">
                     More information about recessional events can be found at 
@@ -537,7 +537,7 @@ button, input[type="submit"], input[type="reset"] {
                 <b>References</b>
             </p>
             <p>
-                Special thanks to <i><b>Jess JaYoung Kim</b></i> for help designing the website appearance.
+                Special thanks to <i><b>Jess JaYoung Kim</b></i> for help in designing the website appearance.
             </p>
             <div>
                 <a href="https://www.investopedia.com/timeline-of-stock-market-crashes-5217820#toc-notable-downturns">Investopedia</a><br>
